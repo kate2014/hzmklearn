@@ -1,0 +1,1 @@
+cobra.add({getMartshowList:{dev_url:"/index.php?ctl=seller_special&act=getSpecialList",url:"/seller_special-getSpecialList.html"},addMartshow:{dev_url:"/index.php?ctl=seller_special&act=addSpecial",url:"/seller_special-addSpecial.html"},brand_list:{dev_url:"http://local.ve.cn/index.php?ctl=seller_brand&act=brandlist",url:"/seller_brand-brandlist.html"}});

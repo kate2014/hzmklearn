@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	   xmlns:context="http://www.springframework.org/schema/context"
+	   xmlns:tx="http://www.springframework.org/schema/tx"
+	   xmlns:aop="http://www.springframework.org/schema/aop"
+	   xsi:schemaLocation="http://www.springframework.org/schema/beans
+            http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+            http://www.springframework.org/schema/context
+            http://www.springframework.org/schema/context/spring-context-3.0.xsd
+            http://www.springframework.org/schema/tx
+            http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
+            http://www.springframework.org/schema/aop
+            http://www.springframework.org/schema/aop/spring-aop-3.0.xsd"
+	   default-autowire="byName">
+	   
+	<description>定时器配置</description>
+	<bean class="org.springframework.scheduling.quartz.SchedulerFactoryBean" autowire="no">
+		<property name="triggers">
+			<list>
+			    <ref bean="dataServiceTrigger"/>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="ipAreaManager" class="com.mockuai.datacenter.core.manager.impl.IpAreaManagerImpl"/>
+	<bean id="pageViewManager" class="com.mockuai.datacenter.core.manager.impl.PageViewManagerImpl"/>
+	
+	<bean id="dataServiceJob"
+		class="com.mockuai.datacenter.core.service.DataService">
+		<property name="ipAreaManager" ref="ipAreaManager" />
+		<property name="pageViewManager" ref="pageViewManager" />
+	</bean>
+	
+	<!-- 订单超时取消 -->
+	<bean id="dataServiceTrigger" class="org.springframework.scheduling.quartz.SimpleTriggerBean">
+		<property name="jobDetail" ref="dataServiceTask" />
+		<property name="repeatInterval">
+			<value>100</value>
+		</property>
+	</bean>
+	
+	<bean id="dataServiceTask"
+		class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetObject" ref="dataServiceJob" />
+		<property name="targetMethod" value="dealData" />
+	</bean>	
+
+
+</beans>

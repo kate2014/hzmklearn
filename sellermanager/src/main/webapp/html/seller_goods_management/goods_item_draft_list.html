@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>商家中心-魔筷科技</title>
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <meta name="robots" content="noindex">
+    <meta name="renderer" content="webkit" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <!-- inject:css -->
+    <link rel="stylesheet" href="../style/pure.min.css?v=1.0.0">
+    <link rel="stylesheet" href="../style/default.css?v=1.0.0">
+    <link rel="stylesheet" href="../style/seller.css?v=1.0.0">
+    <link rel="stylesheet" href="../src/plugin/jquery.poshytip/jquery.poshytip.css?v=1.0.0">
+    <!-- endinject -->
+    <!-- inject:js -->
+    <script src="../src/jq.js?v=1.0.0"></script>
+    <script src="../src/t.js?v=1.0.0"></script>
+    <script src="../src/common.js?v=1.0.0"></script>
+    <script src="../src/cobra.js?v=1.0.0"></script>
+    <script src="../src/plugin/jquery.calendar/jquery.cxcalendar.js?v=1.0.0"></script>
+    <script src="../src/plugin/miniDialog.js?v=1.0.0"></script>
+    <script src="../src/plugin/jquery.poshytip/jquery.poshytip.js?v=1.0.0"></script>
+    <script src="../src/plugin/lazyLoad.js?v=1.0.0"></script>
+    <script src="../src/fn/goods_draft_list.js?v=1.0.0"></script>
+    <!-- endinject -->
+    <script>
+      var status = '';
+    </script>
+  </head>
+
+  <body>
+    <div id="container">
+      <div id="head">
+        <div class="wrapper">
+          <div class="main-logo ">
+            <div id="st-nav"> <span id="login-status" class="op" data-status="1">
+                        <span class="st-icons account">欢迎使用，洋东西</span> <a class="j-logout" href="javascript:;" rel="nofollow">[退出]</a> </span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="main">
+        <div class="ui-nav seller-nav">
+          <div class="ui-nav-main  seller-nav-bg">
+            <ul class="wrapper seller-nav-main">
+              <li class="ui-nav-item ui-nav-item-current"> <a href="../seller_goods_management/goods_item_list.html">商品管理</a>
+                <ul class="ui-nav-submain" style="display:block;">
+                  <li class="ui-nav-subitem ui-nav-subitem-current"> <a href="../seller_goods_management/goods_item_list.html">商品库</a> </li>
+                  <li class="ui-nav-subitem"> <a href="../seller_goods_management/goods_item_add.html">添加商品</a> </li>
+                  <li class="ui-nav-subitem"> <a href="../seller_goods_management/brand_list.html">品牌管理</a> </li>
+                  <li class="ui-nav-subitem"> <a href="../seller_goods_management/tpl_item_list.html">模板管理</a> </li>
+                  <li class="ui-nav-subitem"> <a href="../corner_mark/list.html">角标管理</a> </li>
+                </ul>
+              </li>
+              <li class="ui-nav-item"> <a href="../promotion_management/feed_back.html">运营管理</a>
+                <ul class="ui-nav-submain">
+                  <li class="ui-nav-subitem"> <a href="../promotion_management/feed_back.html">反馈信息</a> </li>
+                  <li class="ui-nav-subitem"> <a href="../promotion_management/send_msg.html">发送站内信</a> </li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+          <div class="ui-nav-subcontainer"></div>
+        </div>
+        <div id="content" class="wrapper">
+          <div class="pure-g admin-wrapper">
+            <div class="pure-u-1 main">
+              <div class="sp-body">
+                <div class="ui-table-container p20">
+                  <div class="ui-box seller-search-form">
+                    <div class="ui-box-head">
+                      <h3 class="ui-box-head-title">商品查询</h3> </div>
+                    <div class="ui-box-container">
+                      <form target="_blank" method="POST" accept-charset="utf-8" cb-node="down_form">
+                        <div class="ui-box-content">
+                          <div class="ui-form-item">
+                            <input class="ui-input extra-width" type="text" name="order_sn" cb-node="good_key" value="" placeholder="请输入商品名称/ID搜索" /> </div>
+                          <div class="ui-form-item ">
+                            <select class="editNation x-small ui-input ui-input-checkcode extra-width" name="brand_key" cb-node="brand_key"> </select>
+                          </div>
+                          <div class="ui-form-item c-999">
+                            <label class="ui-label">录入时间</label>
+                            <input class="ui-input ui-input-small" id="create-time-start-selector" readonly="readonly" type="text" name="create_time_start" cb-node="create_time_start" value="" />
+                            <label class="ul-label">至</label>
+                            <input class="ui-input ui-input-small" id="create-time-end-selector" readonly="readonly" type="text" name="create_time_end" cb-node="create_time_end" value="" /> </div>
+                          <div class="ui-form-item search-btn"> <a href="javascript:;" cb-node="searchBtn" cb-event="click~searchResult" class="ui-button ui-button-mwhite"><i class="iconfont">&#xf012c;</i> 查询</a> </div>
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                  <div class="ui-tab" style="position: relative">
+                    <ul class="ui-tab-items">
+                      <li class="ui-tab-item"> <a href="goods_item_list.html">全部商品</a> </li>
+                      <li class="ui-tab-item"> <a href="goods_item_review_list.html">审核中的商品</a> </li>
+                      <li class="ui-tab-item ui-tab-item-current"> <a href="goods_item_draft_list.html">草稿</a>
+                        <li class="fr"><a class="ui-button ui-button-morange" href="goods_item_add.html"><i class="iconfont">&#xf0175;</i> 添加商品</a> </li>
+                        <li class="fr" style="margin-right: 10px;"> <a href="goods_imports.html" class="ui-button ui-button-mwhite">导入商品</a> </li>
+                    </ul>
+                    <div class="search-title" style="display:none;">
+                      <input class="ui-input" type="text" name="searchTitle" style="margin-left: 0;width: 350px" value="" cb-node="goods_search_input" cb-event="keyup~search_box_change" />
+                      <button class="ui-button ui-button-mwhite searchItemBtn" cb-node="goods_search_btn" cb-event="click~search_submit"> <i class="iconfont">&#xf012c;</i> 查看 </button>
+                      <div class="showResultList" cb-node="goods_search_result"> </div>
+                    </div>
+                  </div>
+                  <table class="ui-table product-list mt-20">
+                    <thead>
+                      <tr>
+                        <th class="product-list-img">图片</th>
+                        <th class="product-list-title">名称</th>
+                        <th>品牌</th>
+                        <th>类目</th>
+                        <th>原价</th>
+                        <th>现价</th>
+                        <th>录入时间</th>
+                        <th>操作</th>
+                      </tr>
+                    </thead>
+                    <tbody cb-node="goods_list_box"> </tbody>
+                  </table>
+                  <!-- 页码开始 -->
+                  <div class="pagination" cb-node="pageination"> </div>
+                  <!-- 页码结束 -->
+                </div>
+              </div>
+              <style type="text/css">
+              </style>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="footer" class="footer-copyright">
+      <div class="footer-content">
+        <div class="wrapper">
+          <p>Copyright © 2015&nbsp;杭州魔筷科技有限公司 &nbsp; 联络电话：0571-88110501</p>
+          <!--<p>-->
+          <!--<a target="_blank" href="http://s1.ve.cn/statics/ve_2_1/css/img/yyzz.jpg?20141117">营业执照</a> |-->
+          <!--<a target="_blank" href="http://s1.ve.cn/statics/ve_2_1/css/img/bbbd.jpg?20141117">中华财险</a> |-->
+          <!--<a target="_blank" href="http://s1.ve.cn/statics/ve_2_1/css/img/spxk.jpg?20141117">食品流通许可证 SP4401061410023262</a></p>-->
+          <!--<div class="footer-links">-->
+          <!--<a href="javascript:;" title="可信网站身份验证" rel="nofollow"><i class="f-logo-1"></i></a>-->
+          <!--<a href="javascript:;" target="_blank" title="经营性网站备案信息" rel="nofollow"><i class="f-logo-2"></i></a>-->
+          <!--<a href="http://www.gzaic.gov.cn/GZCX/WebUI/credit/qiyeInfo.htm" target="_blank" title="" rel="nofollow"><i class="f-logo-3"></i></a>-->
+          <!--<a href="javascript:;" target="_blank" title="" rel="nofollow"><i class="f-logo-4"></i></a>-->
+          <!--<a href="javascript:;" target="_blank" title="" rel="nofollow"><i class="f-logo-5"></i></a>-->
+          <!--<a href="https://www.95516.com/" target="_blank" title="" rel="nofollow"><i class="f-logo-6"></i></a>-->
+          <!--</div>-->
+        </div>
+      </div>
+    </div>
+    <div class="view-Loading modify-item-loading" cb-node="loading" style="display: none;">
+      <p><i class="iconfont">󰃄</i> 正在载入...</p>
+    </div>
+  </body>
+
+</html>

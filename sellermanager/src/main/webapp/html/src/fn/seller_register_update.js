@@ -1,0 +1,1 @@
+!function(e){e._({"~name":"seller.sellerinfo","~superclass":e.base,ctor:function(){this.api="sellerinfo",this._super()},postCreate:function(){var e=this.getQuery("errormsg");this.$.errormsg.html(decodeURI(e))}}),$(function(){new seller.sellerinfo})}(cobra);

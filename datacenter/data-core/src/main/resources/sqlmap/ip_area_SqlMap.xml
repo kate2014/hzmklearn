@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="ip_area">
+    <typeAlias alias="pageViewDO" type="com.mockuai.datacenter.core.domain.PageViewDO" />
+    <typeAlias alias="pageViewQTO" type="com.mockuai.datacenter.common.domain.qto.PageViewQTO" />
+    
+    <insert id="addIpArea" parameterClass="pageViewDO">
+    	insert into data_db.IP_Area(
+    	ip,
+    	area,
+    	visit_time
+    	)
+    	value(
+    	#visitorIp#,
+    	#visitorArea#,
+    	#visitTime#
+    	)
+    </insert>
+    
+    <select id="getArea" parameterClass="pageViewQTO" resultClass="String">
+    	select area from  data_db.IP_Area
+    	where ip=#visitorIp#;
+    </select>
+    
+</sqlMap>

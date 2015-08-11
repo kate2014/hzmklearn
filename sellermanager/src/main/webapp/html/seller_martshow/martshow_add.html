@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>专场添加-商家中心-唯一优品网</title>
+    <meta name="keywords" content="ve,母婴,用品,玩具,包包,书籍,唯一优品" />
+    <meta name="description" content="唯一优品(ve.cn),专注母婴用品折扣特卖,知名品牌婴儿用品特价专卖网站低价确保正品，各类母婴用品、辅食、玩具、包包、书籍全场包邮，支持货到付款，找母婴用品特卖，来ve优品！" />
+    <meta name="robots" content="noindex">
+    <meta name="renderer" content="webkit" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <!-- inject:css -->
+    <link rel="stylesheet" href="../style/pure.min.css?v=1.0.0">
+    <link rel="stylesheet" href="../style/default.css?v=1.0.0">
+    <link rel="stylesheet" href="../style/seller.css?v=1.0.0">
+    <!-- endinject -->
+    <!-- inject:js -->
+    <script src="../src/jq.js?v=1.0.0"></script>
+    <script src="../src/t.js?v=1.0.0"></script>
+    <script src="../src/common.js?v=1.0.0"></script>
+    <script src="../src/cobra.js?v=1.0.0"></script>
+    <script src="../src/plugin/miniDialog.js?v=1.0.0"></script>
+    <script src="../src/fn/martshow_add.js?v=1.0.0"></script>
+    <!-- endinject -->
+  </head>
+
+  <body>
+    <div id="container">
+      <div id="head">
+        <div class="wrapper">
+          <div class="main-logo ">
+            <div id="st-nav"> <span id="login-status" class="op" data-status="1">
+                        <span class="st-icons account">欢迎使用，洋东西</span> <a class="j-logout" href="javascript:;" rel="nofollow">[退出]</a> </span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="main">
+        <div class="ui-nav seller-nav">
+          <div class="ui-nav-main  seller-nav-bg">
+            <ul class="wrapper seller-nav-main">
+              <li class="ui-nav-item"> <a href="../seller_goods_management/goods_item_list.html">商品管理</a>
+                <ul class="ui-nav-submain">
+                  <li class="ui-nav-subitem"> <a href="../seller_goods_management/goods_item_list.html">商品库</a> </li>
+                  <li class="ui-nav-subitem"> <a href="../seller_goods_management/goods_item_add.html">添加商品</a> </li>
+                  <li class="ui-nav-subitem"> <a href="../seller_goods_management/brand_list.html">品牌管理</a> </li>
+                  <li class="ui-nav-subitem"> <a href="../seller_goods_management/tpl_item_list.html">模板管理</a> </li>
+                  <li class="ui-nav-subitem"> <a href="../corner_mark/list.html">角标管理</a> </li>
+                </ul>
+              </li>
+              <li class="ui-nav-item"> <a href="../promotion_management/feed_back.html">运营管理</a>
+                <ul class="ui-nav-submain">
+                  <li class="ui-nav-subitem"> <a href="../promotion_management/feed_back.html">反馈信息</a> </li>
+                  <li class="ui-nav-subitem"> <a href="../promotion_management/send_msg.html">发送站内信</a> </li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+          <div class="ui-nav-subcontainer"></div>
+        </div>
+        <div id="content" class="wrapper">
+          <div class="pure-g admin-wrapper">
+            <div class="pure-u-1 main">
+              <h1 class="seller-title"> 专场管理 </h1>
+              <form action="http://www2.ve.cn/_s/martshow/apply.html" accept-charset="utf-8" class="ui-form mt-20 view-MartShowForm" method="post">
+                <div class="apply-box">
+                  <h3 class="litter-title">专场信息</h3>
+                  <fieldset class="p50 seller-martshow-apply">
+                    <div class="ui-form-item brand ps-re">
+                      <label for="" class="ui-label"><span class="ui-form-required">*</span>专场品牌</label>
+                      <select name="brand" cb-node="brandlist"> </select>
+                      <p class="brand-expired-tip"></p>
+                      <p class="ui-form-explain">列表中只列出已审核通过的品牌， <a href="/seller/seller_goods_management/brand_list.html" target="_blank">添加品牌</a>
+                      </p> <span class="ui-form-other"></span> </div>
+                    <div class="ui-form-item">
+                      <label for="" class="ui-label"><span class="ui-form-required">*</span>专场标题</label>
+                      <input name="title" class="ui-input" style="width: 400px;" type="text" value=""><span class="ui-form-other"></span>
+                      <p class="ui-form-explain">取一个简单明了的标题，如：巴拉巴拉春季童装专场</p>
+                    </div>
+                    <div class="ui-form-item banner-input-container">
+                      <label for="" class="ui-label"><span class="ui-form-required">*</span>专场Banner</label>
+                      <div class="upload-banner view-UploadBannerInput">
+                        <div wg-view="imageUploader" widget-id="widgetImageUploader2166599941421398126549" widget-name="widgetImageUploader">
+                          <div id="widgetImageUploader2166599941421398126549UploadInput" class="uploadify" style="height: 30px; width: 120px;">
+                            <object id="SWFUpload_0" type="application/x-shockwave-flash" data="http://www2.ve.cn//script/src/plugin/uploadify/uploadify.swf?preventswfcaching=1421398126744" width="120" height="30" class="swfupload" style="position: absolute; z-index: 1;">
+                              <param name="wmode" value="transparent">
+                              <param name="movie" value="http://www2.ve.cn//script/src/plugin/uploadify/uploadify.swf?preventswfcaching=1421398126744">
+                              <param name="quality" value="high">
+                              <param name="menu" value="false">
+                              <param name="allowScriptAccess" value="always">
+                              <param name="flashvars" value="movieName=SWFUpload_0&amp;uploadURL=http%3A%2F%2Fwww2.ve.cn%2Ftool%2Fuploader%2Fupload.html&amp;useQueryString=false&amp;requeueOnError=false&amp;httpSuccess=&amp;assumeSuccessTimeout=30&amp;params=upsign%3DV%252BP7lrfOXxOL%252FJc8YHQDLLl1S6SBvVpgfsfdCF96nMJikAlLTBOsHXhUBCY2REPzeEgp91h%252F0uzQ%252BC%252FvkzdgQ%252FnFcWKH9eRYmIPJEjVj2x9C2JjH1b7EqHIbIJdT%252F4WbdIeJDeEDE%252BimUhyqX26ZocBAG630mNn123SHuIJ%252BS%252B4%253D&amp;filePostName=file_upload&amp;fileTypes=*.gif%3B*.jpg%3B*.png&amp;fileTypesDescription=%E5%9B%BE%E5%83%8F%E6%96%87%E4%BB%B6%20(*.jpg%2C*.png)&amp;fileSizeLimit=2048KB&amp;fileUploadLimit=0&amp;fileQueueLimit=999&amp;debugEnabled=false&amp;buttonImageURL=&amp;buttonWidth=120&amp;buttonHeight=30&amp;buttonText=&amp;buttonTextTopPadding=0&amp;buttonTextLeftPadding=0&amp;buttonTextStyle=color%3A%20%23000000%3B%20font-size%3A%2016pt%3B&amp;buttonAction=-100&amp;buttonDisabled=false&amp;buttonCursor=-2">
+                            </object>
+                            <div id="widgetImageUploader2166599941421398126549UploadInput-button" class="uploadify-button upload-img" style="height: 30px; line-height: 30px; width: 120px;"><span class="uploadify-button-text">上传图片</span>
+                            </div>
+                          </div>
+                          <div id="widgetImageUploader2166599941421398126549UploadInput-queue" class="uploadify-queue"></div>
+                        </div>
+                      </div> <span class="ui-form-other"></span>
+                      <p class="ui-form-explain view-UploadBannerInfo">上传一张符合专场特色的banner图，图片大小必须为：1920px*400px，<a target="_blank" href="http://veimg.b0.upaiyun.com/img/seller/banner_etc.jpg" class="blue">查看示例图片 &gt;</a>
+                      </p>
+                    </div>
+                    <div class="ui-form-item">
+                      <div class="uploaded-banner view-UploadedBanner" style="display:none"> </div>
+                    </div>
+                    <div class="ui-form-item" style="display:none;">
+                      <input type="text" name="banner" class="view-UploadedBannerUrl"> </div>
+                    <div class="ui-form-item">
+                      <label for="" class="ui-label"><span class="ui-form-required">*</span>专场背景色</label>
+                      <input name="bgcolor" class="ui-input view-InputBackGrColor" type="text" value=""><span class="ui-form-other"></span>
+                      <p class="ui-form-explain">十六进制颜色值，如FF3300，用于banner图之外区域的背景色填充，请向banner图设计者索取该色值</p>
+                    </div>
+                  </fieldset>
+                </div>
+                <div class="apply-box">
+                  <h3 class="litter-title">发货/退货</h3>
+                  <fieldset class="p50 seller-martshow-apply">
+                    <div class="ui-form-item">
+                      <label for="" class="ui-label"><span class="ui-form-required">*</span>专场退货信息</label>
+                      <div class="view-SellAddress">
+                        <style>
+                          .ml-5 {
+                            margin-left: 5px;
+                          }
+                          .box li {
+                            color: #000000;
+                          }
+                          .box .modify {
+                            margin-left: 5px;
+                            height: 20px;
+                            padding: 0;
+                          }
+                          .box .notice {
+                            margin: 0;
+                            padding: 5px 0 0;
+                            font-size: 12px;
+                            color: #B2B2B2;
+                          }
+                          .address-box fieldset {
+                            border: none;
+                            margin: 0;
+                            padding: 10px 0;
+                          }
+                          .address-box .pure-address-group {
+                            margin: 8px 0;
+                          }
+                          .address-box .pure-address-group label {
+                            width: 120px;
+                            text-align: right;
+                            margin-right: 10px;
+                            display: inline-block;
+                            *zoom: 1;
+                            *display: inline;
+                          }
+                          .address-box .pure-address-group input {
+                            height: 22px;
+                            padding: 4px 6px;
+                            outline: none;
+                            box-shadow: 0 1px 2px #e6e6e6 inset;
+                            border: 1px #ccc solid;
+                          }
+                          .address-box .pure-address-group textarea {
+                            outline: none;
+                            padding: 4px;
+                            border: 1px #ccc solid;
+                            resize: none;
+                            box-shadow: 0 1px 2px #e6e6e6 inset;
+                          }
+                          .address-box .pure-address-controls {
+                            text-align: center;
+                            margin-top: 10px;
+                          }
+                          .address-box .pure-address-controls button {
+                            outline: none;
+                            padding: 0.4em 1.2em;
+                            font-size: 14px;
+                          }
+                          .address-box .pure-address-controls button {
+                            background: #f0f0f0;
+                            color: #333;
+                            border: 1px #ccc solid;
+                          }
+                          .address-box .pure-address-controls button:hover {
+                            background: #e6e6e6;
+                          }
+                          .address-box .pure-address-controls button:active {
+                            box-shadow: 0 1px 2px #aaa inset;
+                          }
+                          .address-box .pure-address-controls button.pink-btn {
+                            background: #FF5482;
+                            color: #fff;
+                            border: 1px #df1149 solid;
+                          }
+                          .address-box .pure-address-controls button.pink-btn:hover {
+                            background: #fd3a6e;
+                          }
+                          .address-box .pure-address-controls button.pink-btn:active {
+                            box-shadow: 0 1px 2px #b20030 inset;
+                          }
+                        </style>
+                        <div class="box view-addressList">
+                          <ul class="ui-list ui-list-nosquare view-AddressList" style="padding: 0;">
+                            <li class="ui-list-item">
+                              <input type="radio" name="address_info" checked="true" value="山西省 太原市 小店区 wew - wqew - 12345678911"> <span class="address-info">山西省 太原市 小店区 wew - wqew - 12345678911</span> <a href="javascript:;" class="modify view-ModifyAddressBtn" style="" address-id="58">修改</a> </li>
+                            <li class="ui-list-item">
+                              <input type="radio" name="address_info" value="河北省 石家庄市 长安区 WWWW - WWWW - 12121"> <span class="address-info">河北省 石家庄市 长安区 WWWW - WWWW - 12121</span> <a href="javascript:;" class="modify view-ModifyAddressBtn" style="display:none" address-id="56">修改</a> </li>
+                            <li class="ui-list-item">
+                              <input type="radio" name="address_info" value="山西省 太原市 杏花岭区 wew - ewew - 11111111111"> <span class="address-info">山西省 太原市 杏花岭区 wew - ewew - 11111111111</span> <a href="javascript:;" class="modify view-ModifyAddressBtn" style="display:none" address-id="57">修改</a> </li>
+                          </ul>
+                          <p class="notice">退货地址 - 联系人 - 联系电话</p>
+                          <p class="notice">添加更多地址，请点击<a class="ml-5 view-AddressAddBtn" href="javascript:;">添加</a>
+                          </p>
+                        </div>
+                        <div class="isTemplate" style="display:none">
+                          <!-- 添加新地址 -->
+                          <div template="addressAddBox" template-display="block" style="display:none">
+                            <div class="address-box view-AddressBox">
+                              <div class="address-tip view-AddressBoxTip" style="display:none;">
+                                <p><i class="iconfont">󰅂</i> 请先添加一个收货地址</p>
+                              </div>
+                              <fieldset>
+                                <div class="pure-address-group">
+                                  <label for="province">所在地区</label>
+                                  <select id="province" name="province" class="view-AddressBoxProvinceList" op-each="provinceData" op-each-item="addressAddBoxListOption">
+                                    <option value=""> 请选择省市 </option>
+                                  </select>
+                                  <select id="city" name="city" class="view-AddressBoxCityList" op-each="cityData" op-each-item="addressAddBoxListOption">
+                                    <option value=""> 请选择城市 </option>
+                                  </select>
+                                  <select id="area" name="area" class="view-AddressBoxAreaList" op-each="areaData" op-each-item="addressAddBoxListOption">
+                                    <option value=""> 请选择区/县 </option>
+                                  </select>
+                                </div>
+                                <div class="pure-address-group" style="display: none;">
+                                  <label for="zip">邮政编码</label>
+                                  <input id="zip" type="text" name="zip" placeholder=""> </div>
+                                <div class="pure-address-group">
+                                  <label for="address">详细地址</label>
+                                  <textarea id="address" name="address" style="width: 255px;height: 96px;" placeholder="不需要重复填写省市区，必须大于5个字符，小于120个字符"></textarea>
+                                </div>
+                                <div class="pure-address-group">
+                                  <label for="fullname">收货人姓名</label>
+                                  <input id="fullname" type="text" name="fullname" placeholder=""> </div>
+                                <div class="pure-address-group">
+                                  <label for="mobile">手机号码</label>
+                                  <input id="mobile" type="text" name="mobile" placeholder=""> </div>
+                                <div class="pure-address-controls">
+                                  <button type="submit" id="delivery-address-save" class="pink-btn view-AddressBoxConfirmBtn">确定 </button>
+                                  <button type="button" class="grey-btn view-AddressBoxCancelBtn">取消</button>
+                                </div>
+                              </fieldset>
+                            </div>
+                          </div>
+                          <!-- 地址option -->
+                          <select style="display:none">
+                            <option value="" template="addressAddBoxListOption" template-display="block" style="display:none" op-value="name,id" op-attr="*,value"></option>
+                          </select>
+                        </div>
+                      </div> <span class="ui-form-other"></span> </div>
+                    <div class="ui-form-item item-qq">
+                      <label for="" class="ui-label"><span class="ui-form-required">*</span>客服QQ</label>
+                      <p class="mt-8 multi_qq clearfix">
+                        <input name="kf_qq[]" class="ui-input" type="text" value="2342314321"> <a class="btn add-record" cb-event="click~add_qq"><i class="iconfont">󰅵</i></a> </p>
+                      <p class="mt-8 multi_qq clearfix">
+                        <input name="kf_qq[]" class="ui-input" type="text" value="2156467894"> </p> <span class="ui-form-other" cb-node="other_qq"></span>
+                      <p class="ui-form-explain">至少两个客服QQ</p>
+                    </div>
+                    <div class="ui-form-item">
+                      <label for="" class="ui-label"><span class="ui-form-required">*</span>客服电话</label>
+                      <input name="kf_tel" class="ui-input" type="text" value="15068540129"> <span class="ui-form-other"></span>
+                      <p class="ui-form-explain">请使用手机号码</p>
+                    </div>
+                    <div class="ui-form-item brand">
+                      <label class="ui-label"><span class="ui-form-required">*</span>发货城市</label>
+                      <select style="width: 130px;" name="province" id="province">
+                        <option value="">请选择省市/其他</option>
+                        <option value="110000">北京</option>
+                        <option value="120000">天津</option>
+                        <option value="130000">河北省</option>
+                        <option value="140000">山西省</option>
+                        <option value="150000">内蒙古自治区</option>
+                        <option value="210000">辽宁省</option>
+                        <option value="220000">吉林省</option>
+                        <option value="230000">黑龙江省</option>
+                        <option value="310000">上海</option>
+                        <option value="320000">江苏省</option>
+                        <option value="330000">浙江省</option>
+                        <option value="340000">安徽省</option>
+                        <option value="350000">福建省</option>
+                        <option value="360000">江西省</option>
+                        <option value="370000">山东省</option>
+                        <option value="410000">河南省</option>
+                        <option value="420000">湖北省</option>
+                        <option value="430000">湖南省</option>
+                        <option value="440000">广东省</option>
+                        <option value="450000">广西壮族自治区</option>
+                        <option value="460000">海南省</option>
+                        <option value="500000">重庆</option>
+                        <option value="510000">四川省</option>
+                        <option value="520000">贵州省</option>
+                        <option value="530000">云南省</option>
+                        <option value="540000">西藏自治区</option>
+                        <option value="610000">陕西省</option>
+                        <option value="620000">甘肃省</option>
+                        <option value="630000">青海省</option>
+                        <option value="640000">宁夏回族自治区</option>
+                        <option value="650000">新疆维吾尔自治区</option>
+                      </select>
+                      <select style="width: 120px;" name="city" id="city">
+                        <option value="440100">广州市</option>
+                        <option value="440200">韶关市</option>
+                        <option value="440300">深圳市</option>
+                        <option value="440400">珠海市</option>
+                        <option value="440500">汕头市</option>
+                        <option value="440600">佛山市</option>
+                        <option value="440700">江门市</option>
+                        <option value="440800">湛江市</option>
+                        <option value="440900">茂名市</option>
+                        <option value="441200">肇庆市</option>
+                        <option value="441300">惠州市</option>
+                        <option value="441400">梅州市</option>
+                        <option value="441500">汕尾市</option>
+                        <option value="441600">河源市</option>
+                        <option value="441700">阳江市</option>
+                        <option value="441800">清远市</option>
+                        <option value="441900">东莞市</option>
+                        <option value="442000">中山市</option>
+                        <option value="445100">潮州市</option>
+                        <option value="445200">揭阳市</option>
+                        <option value="445300">云浮市</option>
+                      </select> <span class="ui-form-other"></span>
+                      <p class="ui-form-explain">请选择发货省市</p>
+                    </div>
+                    <div class="ui-form-item">
+                      <label class="ui-label"><span class="ui-form-required">*</span>默认快递</label>
+                      <div style="padding:5px 0; vertical-align: middle;">
+                        <label style="margin-right: 8px;" for="shentong">
+                          <input type="checkbox" name="default_exp[]" value="申通" checked="checked" id="shentong" class="ui-checkbox">申通</label>
+                        <label style="margin-right: 8px;" for="yuantong">
+                          <input type="checkbox" name="default_exp[]" value="圆通" checked="checked" id="yuantong" class="ui-checkbox">圆通</label>
+                        <label style="margin-right: 8px;" for="zhongtong">
+                          <input type="checkbox" name="default_exp[]" value="中通" id="zhongtong" class="ui-checkbox">中通</label>
+                        <label style="margin-right: 8px;" for="yunda">
+                          <input type="checkbox" name="default_exp[]" value="韵达" id="yunda" class="ui-checkbox">韵达</label>
+                        <label style="margin-right: 8px;" for="shunfeng">
+                          <input type="checkbox" name="default_exp[]" value="顺丰" checked="checked" id="shunfeng" class="ui-checkbox">顺丰</label>
+                        <label style="margin-right: 8px;" for="zhaijisong">
+                          <input type="checkbox" name="default_exp[]" value="宅急送" id="zhaijisong" class="ui-checkbox">宅急送</label>
+                        <label style="margin-right: 8px;" for="ems">
+                          <input type="checkbox" name="default_exp[]" value="EMS" id="ems" class="ui-checkbox">EMS</label>
+                        <label style="margin-right: 8px;" for="huitongkuaidi">
+                          <input type="checkbox" name="default_exp[]" value="汇通" id="huitongkuaidi" class="ui-checkbox">汇通</label>
+                        <label style="margin-right: 8px;" for="tiantian">
+                          <input type="checkbox" name="default_exp[]" value="天天" id="tiantian" class="ui-checkbox">天天</label>
+                        <label style="margin-right: 8px;" for="youshuwuliu">
+                          <input type="checkbox" name="default_exp[]" value="优速物流" id="youshuwuliu" class="ui-checkbox">优速物流</label>
+                        <label style="margin-right: 8px;" for="quanfengkuaidi">
+                          <input type="checkbox" name="default_exp[]" value="全峰快递" id="quanfengkuaidi" class="ui-checkbox">全峰快递</label>
+                        <label style="margin-right: 8px;" for="guotongkuaidi">
+                          <input type="checkbox" name="default_exp[]" value="国通快递" id="guotongkuaidi" class="ui-checkbox">国通快递</label>
+                        <label style="margin-right: 8px;" for="youzhengguonei">
+                          <input type="checkbox" name="default_exp[]" value="邮政小包" id="youzhengguonei" class="ui-checkbox">邮政小包</label>
+                        <label style="margin-right: 8px;" for="longbanwuliu">
+                          <input type="checkbox" name="default_exp[]" value="龙邦物流" id="longbanwuliu" class="ui-checkbox">龙邦物流</label>
+                      </div>
+                      <p class="ui-form-explain"></p>
+                      <p class="ui-form-explain">发货使用快递（可多选）</p>
+                    </div>
+                    <div class="ui-form-item">
+                      <label for="show_promise_protocol">
+                        <input class="ui-checkbox" id="show_promise_protocol" name="show_promise_protocol" value="1" type="checkbox">我已阅读并同意<a target="_blank" href="http://www2.ve.cn/_s/account/promise.html">《商家专场活动承诺书》</a> </label> <span class="ui-form-other"></span> </div>
+                    <div class="ui-form-item">
+                      <input type="submit" style="padding-top: 0px;" class="ui-button ui-button-mred view-SubmitBtn" value="创建专场"> </div>
+                  </fieldset>
+                </div>
+                <div template="createNotice" template-display="block" style="display:none">
+                  <table class="ui-table ui-table-layout-fixed">
+                    <tbody>
+                      <tr>
+                        <th>前台类目</th>
+                        <th>专场款数最低门槛</th>
+                      </tr>
+                    </tbody>
+                    <tbody>
+                      <tr>
+                        <td>童装</td>
+                        <td>15件</td>
+                      </tr>
+                      <tr>
+                        <td>婴儿装</td>
+                        <td>12件</td>
+                      </tr>
+                      <tr>
+                        <td>亲子装</td>
+                        <td>15件</td>
+                      </tr>
+                      <tr>
+                        <td>鞋袜</td>
+                        <td>12件</td>
+                      </tr>
+                      <tr>
+                        <td>配饰</td>
+                        <td>12件</td>
+                      </tr>
+                      <tr>
+                        <td>玩具</td>
+                        <td>8件</td>
+                      </tr>
+                      <tr>
+                        <td>婴儿用品</td>
+                        <td>8件</td>
+                      </tr>
+                      <tr>
+                        <td>孕妈服装</td>
+                        <td>15件</td>
+                      </tr>
+                      <tr>
+                        <td>孕妈用品</td>
+                        <td>8件</td>
+                      </tr>
+                      <tr>
+                        <td>孕妈护肤</td>
+                        <td>8件</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <br> <span class="red">注：如果没有达到要求，将不能通过审核</span> </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="footer" class="footer-copyright">
+      <div class="footer-content">
+        <div class="wrapper">
+          <p>Copyright © 2015&nbsp;杭州魔筷科技有限公司 &nbsp; 联络电话：0571-88110501</p>
+          <!--<p>-->
+          <!--<a target="_blank" href="http://s1.ve.cn/statics/ve_2_1/css/img/yyzz.jpg?20141117">营业执照</a> |-->
+          <!--<a target="_blank" href="http://s1.ve.cn/statics/ve_2_1/css/img/bbbd.jpg?20141117">中华财险</a> |-->
+          <!--<a target="_blank" href="http://s1.ve.cn/statics/ve_2_1/css/img/spxk.jpg?20141117">食品流通许可证 SP4401061410023262</a></p>-->
+          <!--<div class="footer-links">-->
+          <!--<a href="javascript:;" title="可信网站身份验证" rel="nofollow"><i class="f-logo-1"></i></a>-->
+          <!--<a href="javascript:;" target="_blank" title="经营性网站备案信息" rel="nofollow"><i class="f-logo-2"></i></a>-->
+          <!--<a href="http://www.gzaic.gov.cn/GZCX/WebUI/credit/qiyeInfo.htm" target="_blank" title="" rel="nofollow"><i class="f-logo-3"></i></a>-->
+          <!--<a href="javascript:;" target="_blank" title="" rel="nofollow"><i class="f-logo-4"></i></a>-->
+          <!--<a href="javascript:;" target="_blank" title="" rel="nofollow"><i class="f-logo-5"></i></a>-->
+          <!--<a href="https://www.95516.com/" target="_blank" title="" rel="nofollow"><i class="f-logo-6"></i></a>-->
+          <!--</div>-->
+        </div>
+      </div>
+    </div>
+    <div class="view-Loading modify-item-loading" cb-node="loading" style="display: none;">
+      <p><i class="iconfont">󰃄</i> 正在载入...</p>
+    </div>
+  </body>
+
+</html>

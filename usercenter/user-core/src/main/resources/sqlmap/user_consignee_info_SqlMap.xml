@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="user_consignee_info" >
+  <resultMap id="BaseResultMap" class="com.mockuai.usercenter.core.domain.UserConsigneeDO" >
+    <result column="id" property="id" jdbcType="BIGINT" />
+    <result column="biz_code" property="bizCode" jdbcType="VARCHAR" />
+    <result column="user_id" property="userId" jdbcType="BIGINT" />
+    <result column="country_code" property="countryCode" jdbcType="VARCHAR" />
+    <result column="province_code" property="provinceCode" jdbcType="VARCHAR" />
+    <result column="city_code" property="cityCode" jdbcType="VARCHAR" />
+    <result column="area_code" property="areaCode" jdbcType="VARCHAR" />
+    <result column="town_code" property="townCode" jdbcType="VARCHAR" />
+    <result column="address" property="address" jdbcType="VARCHAR" />
+    <result column="phone" property="phone" jdbcType="VARCHAR" />
+    <result column="mobile" property="mobile" jdbcType="VARCHAR" />
+    <result column="zip" property="zip" jdbcType="VARCHAR" />
+    <result column="consignee" property="consignee" jdbcType="VARCHAR" />
+    <result column="is_default" property="isDefault" jdbcType="TINYINT" />
+    <result column="delete_mark" property="deleteMark" jdbcType="TINYINT"/>
+    <result column="gmt_created" property="gmtCreated" jdbcType="TIMESTAMP" />
+    <result column="gmt_modified" property="gmtModified" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id,
+    biz_code,
+    user_id,
+    country_code,
+    province_code,
+    city_code,
+    area_code,
+    town_code,
+    address,
+    phone,
+    mobile,
+    zip,
+    consignee,
+    is_default,
+    delete_mark,
+    gmt_created,
+    gmt_modified
+  </sql>
+ 
+  <select id="selectById" resultMap="BaseResultMap" parameterClass="com.mockuai.usercenter.core.domain.UserConsigneeDO" >
+    select 
+    <include refid="user_consignee_info.Base_Column_List" />
+    from user_consignee_info
+    where id = #id:BIGINT# and user_id =#userId:BIGINT# and delete_mark= 0
+  </select>
+  
+  <select id="selectCount" resultClass="java.lang.Integer" parameterClass="java.lang.Long">
+  	select count(*) from user_consignee_info where user_id = #userId:BIGINT# and delete_mark= 0
+  </select>
+  
+  <select id="queryConsignee" resultMap="BaseResultMap" parameterClass="java.lang.Long">
+  	select <include refid="user_consignee_info.Base_Column_List" /> from user_consignee_info where user_id = #userId:BIGINT# and delete_mark= 0 order by is_default desc
+  </select>
+  
+  <insert id="insert" parameterClass="com.mockuai.usercenter.core.domain.UserConsigneeDO" >
+    insert into user_consignee_info
+    <dynamic prepend="(" >
+      <isNotNull prepend="," property="bizCode" >
+        biz_code
+      </isNotNull>
+      <isNotNull prepend="," property="userId" >
+        user_id
+      </isNotNull>
+      <isNotNull prepend="," property="countryCode" >
+        country_code
+      </isNotNull>
+      <isNotNull prepend="," property="provinceCode" >
+        province_code
+      </isNotNull>
+      <isNotNull prepend="," property="cityCode" >
+        city_code
+      </isNotNull>
+      <isNotNull prepend="," property="areaCode" >
+        area_code
+      </isNotNull>
+      <isNotNull prepend="," property="townCode" >
+        town_code
+      </isNotNull>
+      <isNotNull prepend="," property="address" >
+        address
+      </isNotNull>
+      <isNotNull prepend="," property="phone" >
+        phone
+      </isNotNull>
+      <isNotNull prepend="," property="mobile" >
+        mobile
+      </isNotNull>
+      <isNotNull prepend="," property="zip" >
+        zip
+      </isNotNull>
+      <isNotNull prepend="," property="consignee" >
+        consignee
+      </isNotNull>
+      <isNotNull prepend="," property="isDefault">
+      	is_default
+      </isNotNull>
+      ,delete_mark,gmt_created,gmt_modified
+      
+      )
+    </dynamic>
+    values
+    <dynamic prepend="(" >
+      <isNotNull prepend="," property="bizCode" >
+        #bizCode:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="userId" >
+        #userId:BIGINT#
+      </isNotNull>
+      <isNotNull prepend="," property="countryCode" >
+        #countryCode:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="provinceCode" >
+        #provinceCode:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="cityCode" >
+        #cityCode:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="areaCode" >
+        #areaCode:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="townCode" >
+        #townCode:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="address" >
+        #address:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="phone" >
+        #phone:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="mobile" >
+        #mobile:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="zip" >
+        #zip:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="consignee" >
+        #consignee:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="isDefault" >
+        #isDefault:TINYINT#
+      </isNotNull>
+		,0,now(),now()
+      )
+    </dynamic>
+     <selectKey resultClass="java.lang.Long" keyProperty="id">
+			SELECT LAST_INSERT_ID()
+	</selectKey>
+  </insert>
+  
+ 
+  <update id="updateById" parameterClass="com.mockuai.usercenter.core.domain.UserConsigneeDO" >
+    update user_consignee_info set gmt_modified = now()
+      <isNotNull prepend="," property="countryCode" >
+        country_code = #countryCode:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="provinceCode" >
+        province_code = #provinceCode:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="cityCode" >
+        city_code = #cityCode:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="areaCode" >
+        area_code = #areaCode:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="townCode" >
+        town_code = #townCode:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="address" >
+        address = #address:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="phone" >
+        phone = #phone:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="mobile" >
+        mobile = #mobile:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="zip" >
+        zip = #zip:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="consignee" >
+        consignee = #consignee:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="isDefault">
+      	is_default = #isDefault:TINYINT#
+      </isNotNull>
+    where id = #id:BIGINT# and delete_mark= 0
+  </update>
+  
+  <update id="setDefConsignee" parameterClass="com.mockuai.usercenter.core.domain.UserConsigneeDO">
+  	update user_consignee_info set is_default = 1,gmt_modified = now() where id = #id:BIGINT# and user_id = #userId:BIGINT# and delete_mark= 0
+  </update>
+  <update id="updateDefaultConsignee" parameterClass="java.lang.Long">
+  	update user_consignee_info set is_default = 0,gmt_modified = now() where user_id = #userId:BIGINT# and delete_mark= 0
+  </update>
+  
+  <update id="deleteById" parameterClass="com.mockuai.usercenter.core.domain.UserConsigneeDO">
+  	update user_consignee_info set delete_mark = 1,gmt_modified = now() where id = #id:BIGINT# and user_id = #userId:BIGINT# and delete_mark = 0
+  </update>
+  
+  <update id="deleteByUserId" parameterClass="java.lang.Long">
+  	update user_consignee_info set delete_mark = 1,gmt_modified = now() where user_id = #userId:BIGINT# and delete_mark = 0
+  </update>
+  
+  <update id="restoreByUserId" parameterClass="java.lang.Long">
+  	update user_consignee_info set delete_mark = 0,gmt_modified = now() where user_id = #userId:BIGINT# and delete_mark = 1
+  </update>
+  
+</sqlMap>

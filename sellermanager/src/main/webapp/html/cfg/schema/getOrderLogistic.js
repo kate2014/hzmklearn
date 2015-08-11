@@ -1,0 +1,1 @@
+cobra.add({type:"object",required:!0,properties:{responseBody:{type:"object",required:!0,properties:{data:{type:"string",required:!1},reasons:{type:"object",required:!1,properties:{code:{type:"string",required:!1},msg:{type:"string",required:!1},type:{type:"number",required:!1}}}}},statusCode:{type:"number",required:!0}}});

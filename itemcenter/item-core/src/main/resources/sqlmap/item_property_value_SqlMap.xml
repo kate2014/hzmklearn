@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="item_property_value">
+  <resultMap class="com.mockuai.itemcenter.core.domain.ItemPropertyValueDO" id="BaseResultMap">
+    <result column="id" jdbcType="BIGINT" property="id" />
+    <result column="key_name" jdbcType="VARCHAR" property="keyName" />
+    <result column="val" jdbcType="VARCHAR" property="val" />
+    <result column="item_property_tmpl_id" jdbcType="BIGINT" property="itemPropertyTmplId" />
+    <result column="is_deleted" jdbcType="TINYINT" property="isDeleted" />
+    <result column="gmt_created" jdbcType="TIMESTAMP" property="gmtCreated" />
+    <result column="gmt_modified" jdbcType="TIMESTAMP" property="gmtModified" />
+  </resultMap>
+  
+  
+  <sql id="Base_Column_List">
+    id, key_name, val, item_property_tmpl_id, is_deleted, gmt_created, gmt_modified
+  </sql>
+  
+  <!--  用于关联表item_property_tmpl 的id  -->
+   <select id="selectItemPropertyValue" parameterClass="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="item_property_value.Base_Column_List" />
+    from item_property_value
+    where id = #value# and is_deleted = 0
+  </select>
+
+</sqlMap>

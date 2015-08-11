@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="user_open_info">
+    <!--CREATE TABLE `user_open_info` (-->
+    <!--`id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT 'id',-->
+    <!--`biz_code` varchar(32) NOT NULL COMMENT '应用CODE',-->
+    <!--`user_id` bigint(20) NOT NULL COMMENT '用户ID',-->
+    <!--`open_type` tinyint(2) NOT NULL COMMENT '开放类型 1代表微信',-->
+    <!--`open_id` varchar(32) DEFAULT NULL COMMENT '开放账号',-->
+    <!--`open_uid` varchar(32) DEFAULT NULL COMMENT '开放账号',-->
+    <!--`name` varchar(64) NOT NULL COMMENT '开放平台用户昵称',-->
+    <!--`delete_mark` tinyint(1) NOT NULL COMMENT '0正常/1已删除',-->
+    <!--`gmt_created` datetime NOT NULL COMMENT '创建时间',-->
+    <!--`gmt_modified` datetime NOT NULL COMMENT '最近一次修改时间',-->
+    <!--PRIMARY KEY (`id`)-->
+    <!--) ENGINE=InnoDB AUTO_INCREMENT=55 DEFAULT CHARSET=utf8 COMMENT='第三方开放平台账户信息'-->
+
+    <resultMap id="result" class="com.mockuai.usercenter.core.domain.UserOpenInfoDO">
+        <result property="id" column="id" jdbcType="BIGINT"/>
+        <result property="bizCode" column="biz_code" jdbcType="VARCHAR"/>
+        <result property="userId" column="user_id" jdbcType="BIGINT"/>
+        <result property="openType" column="open_type" jdbcType="TINYINT"/>
+        <result property="openId" column="open_id" jdbcType="VARCHAR"/>
+        <result property="openUid" column="open_uid" jdbcType="VARCHAR"/>
+        <result property="name" column="name" jdbcType="VARCHAR"/>
+        <result property="deleteMark" column="delete_mark" jdbcType="TINYINT"/>
+        <result property="gmtCreated" column="gmt_created" jdbcType="TIMESTAMP"/>
+        <result property="gmtModified" column="gmt_modified" jdbcType="TIMESTAMP"/>
+    </resultMap>
+
+    <sql id="column_set">
+        id,
+        biz_code,
+        user_id,
+        open_type,
+        open_id,
+        open_uid,
+        name,
+        delete_mark,
+        gmt_created,
+        gmt_modified
+    </sql>
+
+    <insert id="addUserOpenInfo" parameterClass="com.mockuai.usercenter.core.domain.UserOpenInfoDO">
+        insert into user_open_info(
+        biz_code,
+        user_id,
+        open_type,
+        open_id,
+        open_uid,
+        name,
+        delete_mark,
+        gmt_created,
+        gmt_modified
+        )
+        values(
+        #bizCode#,
+        #userId#,
+        #openType#,
+        #openId#,
+        #openUid#,
+        #name#,
+        0,
+        now(),
+        now()
+        )
+        <selectKey resultClass="java.lang.Long" keyProperty="id">
+            SELECT LAST_INSERT_ID()
+        </selectKey>
+    </insert>
+
+    <select id="getUserOpenInfo" resultMap="result" parameterClass="com.mockuai.usercenter.core.domain.UserOpenInfoDO">
+        select
+        <include refid="user_open_info.column_set"/>
+        from user_open_info
+        where open_type = #openType# and open_uid = #openUid# and delete_mark=0
+    </select>
+
+    <select id="getUserOpenInfoByUserId" resultMap="result" parameterClass="com.mockuai.usercenter.core.domain.UserOpenInfoDO">
+        select
+        <include refid="user_open_info.column_set"/>
+        from user_open_info
+        where open_type = #openType# and user_id = #userId# and delete_mark=0
+    </select>
+
+    <update id="updateUserId" parameterClass="java.util.Map">
+        update user_open_info
+        set user_id = #newUserId#,gmt_modified = now()
+        where id = #id# and user_id=#oldUserId# and delete_mark = 0
+    </update>
+
+    <update id="deleteUserOpenInfo" parameterClass="java.util.Map">
+        update user_open_info
+        set gmt_modified = now(), delete_mark=1, delete_version=#deleteVersion#
+        where id=#id# and user_id=#userId# and delete_mark = 0
+    </update>
+
+
+</sqlMap>

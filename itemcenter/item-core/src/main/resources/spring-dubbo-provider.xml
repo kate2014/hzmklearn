@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<beans xmlns="http://www.springframework.org/schema/beans"  
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"  
+  xsi:schemaLocation="http://www.springframework.org/schema/beans  
+    http://www.springframework.org/schema/beans/spring-beans.xsd  
+    http://code.alibabatech.com/schema/dubbo  
+    http://code.alibabatech.com/schema/dubbo/dubbo.xsd ">   
+  <!-- 具体的实现bean -->
+    <bean id="itemService" class="com.mockuai.itemcenter.core.api.impl.ItemServiceImpl"/>
+	<!-- 商品相关接口 -->
+  <bean id="itemClient" class="com.mockuai.itemcenter.client.impl.ItemClientImpl" />
+   <!--  商品属性相关的接口  -->
+  <bean id="itemPropertyClient" class="com.mockuai.itemcenter.client.impl.ItemPropertyClientImpl" />
+  
+  <!-- 类目相关的接口  -->
+  <bean id="itemCategoryClient" class="com.mockuai.itemcenter.client.impl.ItemCategoryClientImpl" />
+  
+  <!-- 商品模版相关的接口 -->
+  <bean id="itemTemplateClient" class="com.mockuai.itemcenter.client.impl.ItemTemplateClientImpl" />
+  
+   <!-- 商品品牌相关的接口 -->
+  <bean id="itemBrandClient" class="com.mockuai.itemcenter.client.impl.ItemBrandClientImpl" />	
+   
+  <!-- 角标管理接口 -->
+  <bean id="cornerIconClient" class="com.mockuai.itemcenter.client.impl.CornerIconClientImpl" /> 
+  
+  <!-- 角标管理接口 -->
+  <bean id="itemSkuClient" class="com.mockuai.itemcenter.client.impl.ItemSkuClientImpl" />
+  
+  
+  <!-- 提供方应用信息，用于计算依赖关系 -->
+  <!--<dubbo:application name="item_provider" />	-->
+  <!-- 使用multicast广播注册中心暴露服务地址-->
+  <!-- <dubbo:registry address="multicast://localhost:1234" /> -->   
+  <!-- 使用zookeeper注册中心暴露服务地址 -->  
+  <!-- <dubbo:registry address="zookeeper://192.168.31.225:2181" /> -->
+
+	<dubbo:registry address="zookeeper://${itemcenter.dubbo.registry.address}" />
+	
+ <!-- 用dubbo协议在20880端口暴露服务 -->
+  <dubbo:protocol name="dubbo" port="20992" />
+  
+  <!-- 声明需要暴露的服务接口 -->  
+<!--   <dubbo:service interface="com.mockuai.itemcenter.common.api.ItemService" ref="itemService" protocol="dubbo"/> -->
+ 
+  <dubbo:service interface="com.mockuai.itemcenter.client.ItemClient" ref="itemClient" timeout="10000" protocol="dubbo"/>
+  
+  <dubbo:service interface="com.mockuai.itemcenter.client.ItemPropertyClient" ref="itemPropertyClient" timeout="10000" protocol="dubbo"/>
+  
+  <dubbo:service interface="com.mockuai.itemcenter.client.ItemCategoryClient" ref="itemCategoryClient" timeout="10000" protocol="dubbo"/>
+
+  <dubbo:service interface="com.mockuai.itemcenter.client.ItemTemplateClient" ref="itemTemplateClient" timeout="10000" protocol="dubbo"/>
+ 
+  <dubbo:service interface="com.mockuai.itemcenter.common.api.ItemService" ref="itemService" timeout="10000" protocol="dubbo"/>
+  
+   <dubbo:service interface="com.mockuai.itemcenter.client.ItemBrandClient" ref="itemBrandClient" timeout="10000" protocol="dubbo"/>
+  
+  <dubbo:service interface="com.mockuai.itemcenter.client.CornerIconClient" ref="cornerIconClient" timeout="10000" protocol="dubbo"/>
+  
+  <dubbo:service interface="com.mockuai.itemcenter.client.ItemSkuClient" ref="itemSkuClient" timeout="10000" protocol="dubbo"/>
+
+</beans>

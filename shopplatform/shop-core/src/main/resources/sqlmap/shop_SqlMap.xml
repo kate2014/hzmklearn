@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="Shop">
+    <typeAlias alias="ShopDO" type="com.mockuai.shopplatform.core.domain.ShopDO" />
+    <typeAlias alias="ShopQTO" type="com.mockuai.shopplatform.domain.qto.ShopQTO" />
+    <resultMap class="shopDO" id="shopDOResult">
+        <result column="id" property="id"  />
+        <result column="seller_id" property="sellerId" />
+        <result column="seller_name" property="sellerName" />
+        <result column="biz_code" property="bizCode" />
+        <result column="shop_name" property="shopName" />
+        <result column="shop_status" property="shopStatus" />
+        <result column="shop_desc" property="shopDesc" />
+        <result column="shop_icon_id" property="shopIconId" />
+        <result column="shop_banner_image_id" property="shopBannerImageId" />
+        <result column="shop_address" property="shopAddress" />
+        <result column="customer_service_phone" property="customerServicePhone" />
+        <result column="delete_mark" property="deleteMark"  />
+        <result column="gmt_created" property="gmtCreated"  />
+        <result column="gmt_modified" property="gmtModified"  />
+    </resultMap>
+
+    <insert id="addShop" parameterClass="shopDO">
+        insert into shop
+        <dynamic prepend="(">
+            <isNotNull prepend="," property="id">
+                id
+            </isNotNull>
+            <isNotNull prepend="," property="sellerId">
+                seller_id
+            </isNotNull>
+            <isNotNull prepend="," property="sellerName">
+                seller_name
+            </isNotNull>
+            <isNotNull prepend="," property="bizCode">
+                biz_code
+            </isNotNull>
+            <isNotNull prepend="," property="shopName">
+                shop_name
+            </isNotNull>
+            <isNotNull prepend="," property="shopStatus">
+                shop_status
+            </isNotNull>
+            <isNotNull prepend="," property="shopDesc">
+                shop_desc
+            </isNotNull>
+            <isNotNull prepend="," property="shopIconId">
+                shop_icon_id
+            </isNotNull>
+            <isNotNull prepend="," property="shopBannerImageId">
+                shop_banner_image_id
+            </isNotNull>
+            <isNotNull prepend="," property="shopAddress">
+                shop_address
+            </isNotNull>
+            <isNotNull prepend="," property="customerServicePhone">
+                customer_service_phone
+            </isNotNull>
+            ,delete_mark
+            ,gmt_created
+            ,gmt_modified
+            )
+        </dynamic>
+        values
+        <dynamic prepend="(">
+            <isNotNull prepend="," property="id">
+                #id:Long#
+            </isNotNull>
+            <isNotNull prepend="," property="sellerId">
+                #sellerId:INTEGER#
+            </isNotNull>
+            <isNotNull prepend="," property="sellerName">
+                #sellerName:VARCHAR#
+            </isNotNull>
+            <isNotNull prepend="," property="bizCode">
+                #bizCode:VARCHAR#
+            </isNotNull>
+            <isNotNull prepend="," property="shopName">
+                #shopName:VARCHAR#
+            </isNotNull>
+            <isNotNull prepend="," property="shopStatus">
+                #shopStatus:INTEGER#
+            </isNotNull>
+            <isNotNull prepend="," property="shopDesc">
+                #shopDesc:TEXT#
+            </isNotNull>
+            <isNotNull prepend="," property="shopIconId">
+                #shopIconId:Long#
+            </isNotNull>
+            <isNotNull prepend="," property="shopBannerImageId">
+                #shopBannerImageId:Long#
+            </isNotNull>
+            <isNotNull prepend="," property="shopAddress">
+                #shopAddress:VARCHAR#
+            </isNotNull>
+            <isNotNull prepend="," property="customerServicePhone">
+                #customerServicePhone:VARCHAR#
+            </isNotNull>
+            ,0
+            ,now()
+            ,now()
+            )
+        </dynamic>
+        <selectKey keyProperty="id" resultClass="Long">
+            SELECT
+            LAST_INSERT_ID();
+        </selectKey>
+    </insert>
+
+    <sql id="shop_base_column_list">
+        id, seller_id, seller_name,  biz_code, shop_name, shop_status, shop_desc, shop_icon_id, shop_banner_image_id, shop_address,
+        customer_service_phone, delete_mark, gmt_created, gmt_modified
+    </sql>
+
+    <sql id="ShopQtoQueryWhere">
+        where delete_mark = 0
+        <isNotNull prepend="AND" property="id">
+            id = #id#
+        </isNotNull>
+        <isNotNull prepend="AND" property="sellerId" >
+            seller_id=#sellerId#
+        </isNotNull>
+        <isNotNull prepend="AND" property="sellerName" >
+            seller_name like concat('%', #sellerName#,'%')
+        </isNotNull>
+        <isNotNull prepend="AND" property="shopName">
+            shop_name like concat('%', #shopName#,'%')
+        </isNotNull>
+        <isNotNull prepend="AND" property="shopStatus" >
+            shop_status = #shopStatus#
+        </isNotNull>
+        <isNotNull prepend="AND" property="shopAddress" >
+            shop_address=#shopAddress#
+        </isNotNull>
+        <isNotNull prepend="AND" property="bizCode">
+            biz_code=#bizCode#
+        </isNotNull>
+    </sql>
+
+    <select id="getShopBySellerId" resultMap="shopDOResult" parameterClass="shopDO">
+        select <include refid="shop_base_column_list" /> from shop
+        where delete_mark = 0 and seller_id=#sellerId#
+    </select>
+
+    <select id="getShop" resultMap="shopDOResult" parameterClass="shopDO">
+        select <include refid="shop_base_column_list" /> from shop
+        where delete_mark = 0
+        <dynamic>
+            <isNotNull prepend="AND" property="id" >
+                id=#id#
+            </isNotNull>
+            <isNotNull prepend="AND" property="sellerName" >
+                seller_name=#sellerName#
+            </isNotNull>
+            <isNotNull prepend="AND" property="sellerId" >
+                seller_id=#sellerId#
+            </isNotNull>
+        </dynamic>
+    </select>
+
+    <update id="updateShop" parameterClass="shopDO">
+        update shop
+        set gmt_modified=now()
+        <dynamic prepend="">
+            <isNotNull prepend="," property="sellerName">
+                seller_name = #sellerName#
+            </isNotNull>
+            <isNotNull prepend="," property="shopStatus">
+                shop_status = #shopStatus#
+            </isNotNull>
+            <isNotNull prepend="," property="bizCode">
+                biz_code = #bizCode#
+            </isNotNull>
+            <isNotNull prepend="," property="shopDesc">
+                shop_desc = #shopDesc#
+            </isNotNull>
+            <isNotNull prepend="," property="shopIconId">
+                shop_icon_id = #shopIconId#
+            </isNotNull>
+            <isNotNull prepend="," property="shopBannerImageId">
+                shop_banner_image_id = #shopBannerImageId#
+            </isNotNull>
+            <isNotNull prepend="," property="shopAddress">
+                shop_address = #shopAddress#
+            </isNotNull>
+            <isNotNull prepend="," property="customerServicePhone">
+                customer_service_phone = #customerServicePhone#
+            </isNotNull>
+        </dynamic>
+        where delete_mark = 0 and seller_id= #sellerId#
+    </update>
+
+    <update id="deleteShop" parameterClass="shopDO" >
+        update shop
+        set gmt_modified=now(),delete_mark = 1  where delete_mark = 0 and id = #id#  and seller_id=#sellerId#
+    </update>
+
+    <update id="updateShopStatus" parameterClass="shopDO">
+        update shop
+        set gmt_modified=now(),
+        shop_status = #shopStatus#
+        where delete_mark = 0 and seller_id = #sellerId#
+    </update>
+
+    <select id="countShop" resultClass="Integer" parameterClass="shopQTO">
+        select count(1) from shop
+        <include refid="ShopQtoQueryWhere" />
+    </select>
+
+    <select id="queryShopList" resultMap="shopDOResult"	parameterClass="shopQTO">
+        select	<include refid="shop_base_column_list" />	from shop
+        <include refid="ShopQtoQueryWhere" />
+        order by gmt_created desc
+        <isNotNull property="needPaging">
+            limit #offset#,#pageSize#
+        </isNotNull>
+    </select>
+
+    <select id="isShopExist" resultClass="Integer" parameterClass="shopDO">
+        select count(1) from shop
+        where
+        <dynamic>
+            <isNotNull prepend="" property="sellerId">
+                seller_id = #sellerId#
+            </isNotNull>
+            <isNotNull prepend="and" property="shopName">
+                shop_name = #shopName#
+            </isNotNull>
+        </dynamic>
+    </select>
+
+</sqlMap>

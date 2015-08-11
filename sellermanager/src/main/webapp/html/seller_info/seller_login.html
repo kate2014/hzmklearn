@@ -1,0 +1,100 @@
+<!DOCTYPE>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>商家中心-魔筷科技</title>
+    <meta name="renderer" content="webkit" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <!-- inject:css -->
+    <link rel="stylesheet" href="../style/pure.min.css?v=1.0.0">
+    <link rel="stylesheet" href="../style/default.css?v=1.0.0">
+    <!-- endinject -->
+    <link rel="stylesheet" href="../style/seller_login.css" type="text/css" media="all" />
+    <!-- inject:js -->
+    <script src="../src/jq.js?v=1.0.0"></script>
+    <script src="../src/t.js?v=1.0.0"></script>
+    <script src="../src/common.js?v=1.0.0"></script>
+    <script src="../src/cobra.js?v=1.0.0"></script>
+    <script src="../src/plugin/jquery.checkform.js?v=1.0.0"></script>
+    <script src="../src/fn/seller_login.js?v=1.0.0"></script>
+    <!-- endinject -->
+  </head>
+
+  <body>
+    <div id="container" class="login-form">
+      <!-- 顶部导航 END -->
+      <div id="head">
+        <div class="wrapper">
+          <div class="main-logo"> <span class="main-logo-a">&nbsp;</span>
+            <ul>
+              <!-- 登录前显示 START -->
+              <li class="view-LoginStatus" data-status="0">欢迎来到魔筷科技</li>
+            </ul>
+          </div>
+        </div>
+        <div id="main-nav" style="height:0px;">
+          <!--            <div class="wrapper"> <a href="#" class="nav-item current">登录</a> </div>--></div>
+      </div>
+      <div id="main">
+        <div id="content" class="wrapper mt-25 white-bg box-shadow login-content">
+          <div class="login-left"> <img src="../style/images/seller/welcome.png" width='338' height='354' style="margin-top:75px" cb-node="brand_other_upload_thumb" alt="" /> </div>
+          <div class="login-right-panel">
+            <div id="m-member-panel" class="loginForm-input" cb-node="loginForm">
+              <h2>登录魔筷科技商家中心</h2>
+              <form class="pure-form pure-form-aligned" accept-charset="utf-8" autocomplete="off">
+                <fieldset>
+                  <div class="pure-control-group"> <span class="input-username"></span>
+                    <input type="text" id="username" autofocus=true tabindex="1" data-hint="输入注册邮箱/手机" class="pure-input-1-3 login-input" name="user_name" value="" cb-node="username" placeholder="请输入账号" /> <span class="tip"></span> </div>
+                  <div class="pure-control-group"> <span class="input-password"></span>
+                    <input type="password" id="passwd" tabindex="2" class="pure-input-1-3 login-input" name="password" value="" cb-node="passwd" placeholder="请输入8~20位密码" /> </div>
+                  <div class="pure-control-group">
+                    <input type="text" id="checkcode" tabindex="3" name="verify_code" maxlength="4" placeholder="验证码" class="i-checkcode login-input-checkcode" cb-node="checkcode" /> <img class="checkcodeimg" id="checkcodeimg" title="看不清？换一张" src="http://127.0.0.1:8080/sellercenter/verify_code.do" />&nbsp;&nbsp; <span class="checkcode-tip"><a class="changeColor" id="verifycode-refresh" cb-node="verifycode_refresh" href="javascript:;" >换一张？</a></span>
+                    <p class="indicator-field"></p>
+                  </div>
+                  <div class="remember-me">
+                    <label class="pure-checkbox pure-input-1-3 login-label" for="remember-me">
+                      <input type="checkbox" checked="checked" id="remember-me" name="remember-me">&nbsp;&nbsp;记住我 <a href="seller_forgot_pwd.html" class="forget-pw f-12 login-link">忘记密码？</a> </label>
+                  </div>
+                  <!--                                <div class=""> <button id="submit-btn" data-hint="正在登录..." type="button" class="pure-button pure-input-1-3 pure-button-main view-LoginBtn view-EnterBtn login-button" name="loginButton" cb-node="loginButton" tabindex="4" cb-event="click~submitLogin">登录</button> <span id="msg-area" class="f-12">&lt;!&ndash;  &ndash;&gt;</span> </div>-->
+                  <div class="">
+                    <input value="登 录" type="button" class="signin-btn submit" cb-event="click~submitLogin" cb-node="loginButton"> </div>
+                  <div class=""> <span class="error-msg"></span> </div>
+                  <!--<div class="">-->
+                  <!--<label class="pure-checkbox pure-input-1-3 login-label-register" for="remember-me">-->
+                  <!--还不是入驻商家？-->
+                  <!--<a href="./../../zs/zs_index.html" class="forget-pw f-12 login-lable-link">申请入驻</a>-->
+                  <!--</label>-->
+                  <!--</div>-->
+                </fieldset>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="footer" class="footer-copyright">
+      <div class="footer-content">
+        <div class="wrapper">
+          <p>Copyright © 2015&nbsp;杭州魔筷科技有限公司 &nbsp; 联络电话：0571-88110501</p>
+          <!--<p>-->
+          <!--<a target="_blank" href="http://s1.ve.cn/statics/ve_2_1/css/img/yyzz.jpg?20141117">营业执照</a> |-->
+          <!--<a target="_blank" href="http://s1.ve.cn/statics/ve_2_1/css/img/bbbd.jpg?20141117">中华财险</a> |-->
+          <!--<a target="_blank" href="http://s1.ve.cn/statics/ve_2_1/css/img/spxk.jpg?20141117">食品流通许可证 SP4401061410023262</a></p>-->
+          <!--<div class="footer-links">-->
+          <!--<a href="javascript:;" title="可信网站身份验证" rel="nofollow"><i class="f-logo-1"></i></a>-->
+          <!--<a href="javascript:;" target="_blank" title="经营性网站备案信息" rel="nofollow"><i class="f-logo-2"></i></a>-->
+          <!--<a href="http://www.gzaic.gov.cn/GZCX/WebUI/credit/qiyeInfo.htm" target="_blank" title="" rel="nofollow"><i class="f-logo-3"></i></a>-->
+          <!--<a href="javascript:;" target="_blank" title="" rel="nofollow"><i class="f-logo-4"></i></a>-->
+          <!--<a href="javascript:;" target="_blank" title="" rel="nofollow"><i class="f-logo-5"></i></a>-->
+          <!--<a href="https://www.95516.com/" target="_blank" title="" rel="nofollow"><i class="f-logo-6"></i></a>-->
+          <!--</div>-->
+        </div>
+      </div>
+    </div>
+    <div class="view-Loading modify-item-loading" cb-node="loading" style="display: none;">
+      <p><i class="iconfont">󰃄</i> 正在载入...</p>
+    </div>
+  </body>
+
+</html>

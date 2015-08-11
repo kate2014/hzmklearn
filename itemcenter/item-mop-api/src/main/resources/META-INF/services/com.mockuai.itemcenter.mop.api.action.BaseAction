@@ -1,0 +1,13 @@
+com.mockuai.itemcenter.mop.api.action.GetItem
+com.mockuai.itemcenter.mop.api.action.ItemList
+com.mockuai.itemcenter.mop.api.action.AddItem
+com.mockuai.itemcenter.mop.api.action.AddCollection
+com.mockuai.itemcenter.mop.api.action.DeleteCollection
+com.mockuai.itemcenter.mop.api.action.CollectionList
+com.mockuai.itemcenter.mop.api.action.ItemCommentList
+com.mockuai.itemcenter.mop.api.action.AddItemComment
+com.mockuai.itemcenter.mop.api.action.SubCateList
+com.mockuai.itemcenter.mop.api.action.GetCategory
+com.mockuai.itemcenter.mop.api.action.updateItemStock
+com.mockuai.itemcenter.mop.api.action.ItemCommentGrade
+com.mockuai.itemcenter.mop.api.action.QueryShopGroupItem

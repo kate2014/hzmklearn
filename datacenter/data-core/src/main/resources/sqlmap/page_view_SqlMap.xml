@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="page_view">
+    <typeAlias alias="pageViewDO" type="com.mockuai.datacenter.core.domain.PageViewDO" />
+    <typeAlias alias="pageViewQTO" type="com.mockuai.datacenter.common.domain.qto.PageViewQTO" />
+
+    <resultMap class="pageViewDO" id="pageViewDOResult">
+        <result column="id" property="id"  />
+        <result column="biz_code" property="bizCode" />
+        <result column="seller_id" property="sellerId" />
+        <result column="vid" property="vid" />
+        <result column="visit_type" property="visitType" />
+        <result column="visitor_ip" property="visitorIp" />
+        <result column="user_id" property="userId" />
+        <result column="visitor_area" property="visitorArea" />
+        <result column="device_type" property="deviceType" />
+        <result column="visit_time" property="visitTime" />
+        <result column="delete_mark" property="deleteMark"  />
+        <result column="gmt_created" property="gmtCreated"  />
+        <result column="gmt_modified" property="gmtModified"  />
+    </resultMap>
+
+    <resultMap class="pageViewDO" id="pageViewTopDOResult">
+        <result column="vid" property="vid" />
+        <result column="num" property="num"  />
+    </resultMap>
+
+    <resultMap class="pageViewDO" id="pageViewAreaDOResult">
+        <result column="visitor_area" property="visitorArea" />
+        <result column="num" property="num"  />
+    </resultMap>
+
+    <resultMap class="pageViewDO" id="pageViewDeviceDOResult">
+        <result column="device_type" property="deviceType" />
+        <result column="num" property="num"  />
+    </resultMap>
+
+    <resultMap class="pageViewDO" id="pageViewDayDOResult">
+        <result column="result_date" property="resultDate"  />
+        <result column="num" property="num"  />
+    </resultMap>
+
+    <resultMap class="pageViewDO" id="pageViewHourDOResult">
+        <result column="result_hour" property="resultHour"  />
+        <result column="num" property="num"  />
+    </resultMap>
+
+	<insert id="addPageView"  parameterClass="pageViewDO">
+		insert into data_db.page_view(
+			seller_id,
+			vid,
+			visit_type,
+			visitor_ip,
+			user_id,
+			visitor_area,
+			device_type,
+			visit_time,
+			delete_mark,
+			gmt_created,
+			gmt_modified
+		)
+		values(
+		#sellerId#,
+		#vid#,
+		#visitType#,
+		#visitorIp#,
+		#userId#,
+		#visitorArea#,
+		#deviceType#,
+		#visitTime#,
+		0,
+		now(),
+		now()
+		)
+	</insert>
+
+    <sql id="page_view_base_column_list">
+        id, biz_code, seller_id, vid, visit_type, visitor_ip, user_id, visitor_area, device_type, visit_time, delete_mark,
+         gmt_created, gmt_modified
+    </sql>
+
+    <sql id="PageViewDAO.queryWhere">
+        where delete_mark = 0
+        <isNotNull prepend="AND" property="id">
+            id = #id#
+        </isNotNull>
+        <isNotNull prepend="AND" property="sellerId" >
+            seller_id=#sellerId#
+        </isNotNull>
+        <isNotNull prepend="AND" property="days">
+            <![CDATA[
+              datediff(now(), visit_time)<=#days#
+              and
+              datediff(now(), visit_time)>0
+            ]]>
+        </isNotNull>
+        <isNotNull prepend="AND" property="startTime" >
+            <![CDATA[
+              visit_time>=#startTime#
+            ]]>
+        </isNotNull>
+        <isNotNull prepend="AND" property="endTime" >
+            <![CDATA[
+              visit_time<=#endTime#
+            ]]>
+        </isNotNull>
+    </sql>
+
+
+
+    <!--查询商品浏览TOP10-->
+    <select id="PageViewDAO.queryItemTop" resultMap="pageViewTopDOResult" parameterClass="pageViewQTO">
+        select vid, count(*) as num from page_view
+        <include refid="PageViewDAO.queryWhere" />
+        and visit_type=0 group by vid order by num desc limit 10
+    </select>
+
+    <!--查询各省访客-->
+    <select id="PageViewDAO.queryVisitorArea" resultMap="pageViewAreaDOResult"	parameterClass="pageViewQTO">
+        select	visitor_area, count(*) as num from page_view
+        <include refid="PageViewDAO.queryWhere" />
+        group by visitor_area
+    </select>
+
+    <!--查询访客设备-->
+    <select id="PageViewDAO.queryDeviceType" resultMap="pageViewDeviceDOResult"	parameterClass="pageViewQTO">
+        select	device_type, count(*) as num from page_view
+        <include refid="PageViewDAO.queryWhere" />
+        group by device_type
+    </select>
+
+    <!--统计商铺前一天，前一周，总PVUV,额外传一个int:days-->
+    <select id="PageViewDAO.countShopPv" resultClass="Integer" parameterClass="pageViewQTO">
+        select count(visitor_ip) from page_view
+        <include refid="PageViewDAO.queryWhere" />
+
+    </select>
+    <select id="PageViewDAO.countShopUv" resultClass="Integer" parameterClass="pageViewQTO">
+        select count(DISTINCT visitor_ip) from page_view
+        <include refid="PageViewDAO.queryWhere" />
+
+    </select>
+
+    <!--按时间段筛选,额外传start_time,end_time（包括前一周）-->
+    <select id="PageViewDAO.queryShopPv" resultMap="pageViewDayDOResult" parameterClass="pageViewQTO">
+        select date(visit_time) as result_date, count(visitor_ip) as num from page_view
+        <include refid="PageViewDAO.queryWhere" />
+        group by date(visit_time)
+    </select>
+    <select id="PageViewDAO.queryShopUv" resultMap="pageViewDayDOResult" parameterClass="pageViewQTO">
+        select date(visit_time) as result_date, count(DISTINCT visitor_ip) as num from page_view
+        <include refid="PageViewDAO.queryWhere" />
+        group by date(visit_time)
+    </select>
+    <select id="PageViewDAO.countShopUvTotal" resultClass="Integer" parameterClass="pageViewQTO">
+        select count(DISTINCT visitor_ip) from page_view
+        <include refid="PageViewDAO.queryWhere" />
+    </select>
+
+    <!--按小时统计独立访客,昨天，一周，总共-->
+    <select id="PageViewDAO.queryShopHourUv" resultMap="pageViewHourDOResult" parameterClass="pageViewQTO">
+        select hour(visit_time) as result_hour, count(DISTINCT visitor_ip) as num from page_view
+        <include refid="PageViewDAO.queryWhere" />
+        group by hour(visit_time)
+    </select>
+
+    <!--昨天，七天(一段时间)之内的新访客,这里只查一天的,在action里遍历-->
+    <select id="PageViewDAO.countNewVisitor" resultMap="pageViewDayDOResult" parameterClass="pageViewQTO">
+        select date(#startTime#) as result_date, count(DISTINCT visitor_ip) as num from page_view
+        where delete_mark = 0
+        <isNotNull prepend="AND" property="sellerId" >
+            seller_id=#sellerId#
+        </isNotNull>
+        and date(visit_time)=#startTime# and visitor_ip not in(select visitor_ip from page_view where
+        <![CDATA[
+          date(visit_time)<#startTime#
+        ]]>
+        )
+    </select>
+
+</sqlMap>

@@ -1,0 +1,1 @@
+cobra.add({"imageUploadUrl":"http://seller.taojae.com/?ctl=seller&act=upload_img","gUploadImage":"http://b.taojae.com/service.php","production":"http://seller.taojae.com","use":"production"});

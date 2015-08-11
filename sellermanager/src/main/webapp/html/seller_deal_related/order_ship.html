@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>发货-交易管理-商家中心-唯一优品网</title>
+    <meta name="keywords" content="ve,母婴,用品,玩具,包包,书籍,唯一优品" />
+    <meta name="description" content="唯一优品(ve.cn),专注母婴用品折扣特卖,知名品牌婴儿用品特价专卖网站低价确保正品，各类母婴用品、辅食、玩具、包包、书籍全场包邮，支持货到付款，找母婴用品特卖，来ve优品！" />
+    <meta name="robots" content="noindex">
+    <meta name="renderer" content="webkit" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <!-- inject:css -->
+    <link rel="stylesheet" href="../style/pure.min.css?v=1.0.0">
+    <link rel="stylesheet" href="../style/default.css?v=1.0.0">
+    <link rel="stylesheet" href="../style/seller.css?v=1.0.0">
+    <link rel="stylesheet" href="../src/plugin/jquery.poshytip/jquery.poshytip.css?v=1.0.0">
+    <!-- endinject -->
+    <!-- inject:js -->
+    <script src="../src/jq.js?v=1.0.0"></script>
+    <script src="../src/t.js?v=1.0.0"></script>
+    <script src="../src/common.js?v=1.0.0"></script>
+    <script src="../src/cobra.js?v=1.0.0"></script>
+    <script src="../src/plugin/jquery.poshytip/jquery.poshytip.js?v=1.0.0"></script>
+    <script src="../src/plugin/miniDialog.js?v=1.0.0"></script>
+    <script src="../src/plugin/jquery.calendar/jquery.cxcalendar.js?v=1.0.0"></script>
+    <script src="../src/plugin/moment/moment.min.js?v=1.0.0"></script>
+    <script src="../src/plugin/uploadify/jquery.uploadify.js?v=1.0.0"></script>
+    <script src="../src/fn/order_ship.js?v=1.0.0"></script>
+    <!-- endinject -->
+    <style>
+      .modify-item-loading {
+        z-index: 9999999;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="container">
+      <div id="head">
+        <div class="wrapper">
+          <div class="main-logo ">
+            <div id="st-nav"> <span id="login-status" class="op" data-status="1">
+                        <span class="st-icons account">欢迎使用，洋东西</span> <a class="j-logout" href="javascript:;" rel="nofollow">[退出]</a> </span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="main">
+        <div class="ui-nav seller-nav">
+          <div class="ui-nav-main  seller-nav-bg">
+            <ul class="wrapper seller-nav-main">
+              <li class="ui-nav-item"> <a href="../seller_goods_management/goods_item_list.html">商品管理</a>
+                <ul class="ui-nav-submain">
+                  <li class="ui-nav-subitem"> <a href="../seller_goods_management/goods_item_list.html">商品库</a> </li>
+                  <li class="ui-nav-subitem"> <a href="../seller_goods_management/goods_item_add.html">添加商品</a> </li>
+                  <li class="ui-nav-subitem"> <a href="../seller_goods_management/brand_list.html">品牌管理</a> </li>
+                  <li class="ui-nav-subitem"> <a href="../seller_goods_management/tpl_item_list.html">模板管理</a> </li>
+                  <li class="ui-nav-subitem"> <a href="../corner_mark/list.html">角标管理</a> </li>
+                </ul>
+              </li>
+              <li class="ui-nav-item"> <a href="../promotion_management/feed_back.html">运营管理</a>
+                <ul class="ui-nav-submain">
+                  <li class="ui-nav-subitem"> <a href="../promotion_management/feed_back.html">反馈信息</a> </li>
+                  <li class="ui-nav-subitem"> <a href="../promotion_management/send_msg.html">发送站内信</a> </li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+          <div class="ui-nav-subcontainer"></div>
+        </div>
+        <div id="content" class="wrapper">
+          <div class="pure-g admin-wrapper">
+            <div class="pure-u-1 main">
+              <h1 class="seller-title"> 发货 <span class="c-999 f-12">（仅用于查看和处理待发货订单，点此<a href="/seller/seller_deal_related/order_list.html" target="_blank">查看全部订单</a>）</span> <div class="seller-title-head-more"> <a href="javascript:;" cb-node="import_order_ship" cb-event="click~showImportDialog" class="ui-button ui-button-mwhite"><i class="iconfont">󰅡</i>批量发货</a> </div> </h1>
+              <div class="p20">
+                <div class="ui-box seller-search-form">
+                  <div class="ui-box-head">
+                    <h3 class="ui-box-head-title">订单查询</h3> <a href="/seller/seller_deal_related/order_ship.html" class="ui-box-head-text underline">查看所有待发货订单</a> </div>
+                  <div class="ui-box-container">
+                    <form action="/seller_order-ship_down.html" target="_blank" method="POST" accept-charset="utf-8" cb-node="down_form">
+                      <div class="ui-box-content clearfix">
+                        <div class="ui-form-item">
+                          <label class="ui-label">订单号</label>
+                          <input name="order_sn" class="ui-input" type="text" cb-node="order_search_sn_input" value="" /> </div>
+                        <div class="ui-form-item">
+                          <label class="ui-label">手机号码</label>
+                          <input name="mobile" class="ui-input" type="text" cb-node="order_search_phone_input" value="" /> </div>
+                        <div class="ui-form-item c-999">
+                          <label class="ui-label">下单时间</label>
+                          <input name="create_time_start" class="ui-input ui-input-small" id="create-time-start-selector" readonly="readonly" type="text" cb-node="order_search_time_start" value="" />
+                          <label class="ul-label">至</label>
+                          <input name="create_time_end" class="ui-input ui-input-small" id="create-time-end-selector" readonly="readonly" type="text" cb-node="order_search_time_end" value="" /> </div>
+                        <!--div class="ui-form-item search-btn fr" data-type=1 cb-node="order_expand_btn" cb-event="click~orderExpand"> <a href="javascript:;" class="ui-button ui-button-mwhite">展开全部订单</a> </div-->
+                        <input type="hidden" name="order_status" value="0" cb-node="order_status_input" />
+                        <div class="ui-form-item search-btn" cb-node="order_search_btn" cb-event="click~orderSearchSubmit"> <a href="javascript:;" class="ui-button ui-button-mwhite"><i class="iconfont"> &#xf012c;</i> 查询</a>
+                          <input type="button" cb-node="down_btn" class="ui-button ui-button-mwhite" style="line-height: 28px;height: 28px;" value="导出订单"
+                          cb-event="click~downOrderList" /> </div>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+                <table class="ui-table order-list">
+                  <thead>
+                    <tr>
+                      <th class="ol-order-items"> &nbsp;&nbsp;商品 </th>
+                      <th class="ol-order-price">单价</th>
+                      <th class="ol-order-number" style="width: auto;">数量</th>
+                      <th class="ol-order-time">维权/售后</th>
+                      <th class="ol-order-gsr">满减</th>
+                      <th class="ol-order-pay">实付款</th>
+                      <th class="ol-order-status">订单状态</th>
+                    </tr>
+                  </thead>
+                </table>
+                <div cb-node="order_list">
+                  <div class="trade-entry" style="margin:0;border-top:none;border-bottom:none;">
+                    <div class="order-entry">
+                      <div class="order-head" data-toggle="2014073114292366" style="cursor: pointer;text-align: center;" cb-event="click~showDetail"> <span>正在加载...</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- 页码开始 -->
+                <div class="pagination" cb-node="pageination"> </div>
+                <!-- 页码结束 -->
+              </div>
+              <div class="isTemplate" style="display:none">
+                <div template="orderExportBox" template-display="block" style="display:none">
+                  <div class="order-export-box view-OrderExportBox">
+                    <form name="exportForm" class="ui-form mt-20" method="POST" accept-charset="utf-8">
+                      <fieldset>
+                        <div class="ui-form-item">
+                          <label for="create_time_start" class="ui-label ui-label-reset"><span class="ui-form-required">*</span><span class="red">付款</span>时间</label>
+                          <input class="ui-input box-timepicker-start" style="width:120px;" readonly="readonly" type="text" name="create_time_start" value="" /> 至
+                          <input class="ui-input box-timepicker-end" style="width:120px;" readonly="readonly" type="text" name="create_time_end" value="" />
+                          <p class="ui-form-explain">现已经将原“下单时间”调整为“付款时间”</p>
+                          <p class="ui-form-explain">本功能只能导出<span class="red">未发货</span>且<span class="red">用户付款30分钟后</span>的订单 </p>
+                          <p class="ui-form-explain">例如：如导出17点之前完成付款的订单，建议在17点30分进行导出操作</p>
+                        </div>
+                        <div class="ui-form-item">
+                          <label for="mart_id" class="ui-label">专场ID</label>
+                          <input class="ui-input" type="text" name="mart_id" id="mart_id"> <span class="ui-form-other"><a href="#" class="blue" style="display: none">查看专场ID</a></span>
+                          <p class="ui-form-explain">此项非必填，指定专场ID将只导出该专场下的待发货订单</p>
+                        </div>
+                        <div class="ui-form-item">
+                          <label for="format" class="ui-label">导出模板</label>
+                          <select id="format" name="format" class="ui-input">
+                            <option value="1">通用合并</option>
+                            <option value="2">通用</option>
+                            <option value="3">通用(订单去重)</option>
+                            <option value="4">网店管家</option>
+                            <option value="5">E店宝</option>
+                            <option value="11">淘宝CSV格式</option>
+                            <option value="13">管易</option>
+                          </select>
+                          <!-- <span class="ui-form-other"><a href="" class="blue">自定义</a></span>  -->
+                          <p class="ui-form-explain"> 如贵司使用的ERP系统不在当前列表中，请使用通用方式导出。可使用Excel或安排贵司技术人员处理成ERP系统要求的格式。</p>
+                        </div>
+                        <div class="ui-form-item">
+                          <label class="ui-label"><span class="ui-form-required">*</span>验证码</label>
+                          <input class="ui-input ui-input-checkcode" type="text" data-explain="请输入右图中字符，不区分大小写。" maxlength="4" autocomplete="off" value="" name="checkcode"> <img class="ui-checkcode-imgcode-img" align="absMiddle" alt="请输入您看到的内容" src="../../verify.php" title="点击刷新图片校验码"> <a href="#" class="c-999" id="ui-verify-code-refresh">看不清，换一张</a>
+                          <div class="ui-form-explain">请输入右图中字符，不区分大小写。</div>
+                        </div>
+                        <div class="ui-form-item">
+                          <input id="exportBtn" type="button" class="ui-button ui-button-mred" value="导出" style="line-height:18px;"> <span id="resultText" class="red"></span> </div>
+                      </fieldset>
+                    </form>
+                  </div>
+                </div>
+                <div template="orderImportBox" template-display="block" style="display:none">
+                  <div class="order-import-box view-OrderImportBox">
+                    <div class="ui-tipbox ui-tipbox-wait">
+                      <div class="ui-tipbox-icon"> <i class="iconfont" title="提示">&#xf00b6;</i> </div>
+                      <div class="ui-tipbox-content">
+                        <h3 class="ui-tipbox-title">批量发货须知</h3>
+                        <p class="ui-tipbox-explain">请将订单号与对应的物流信息按下方模板所示格式上传到此处完成批量发货</p>
+                        <p class="ui-tipbox-explain"><a class="blue" href="">下载发货单模板</a>&nbsp;&nbsp; 您还可以查看 <a href="http://www2.ve.cn/_s/help/logistics_1.html" target="_blank">发货帮助</a> </p>
+                        <p class="ui-tipbox-explain">单号和订单号复制前请先设置格式为文本，以解决<b>科学计数法</b>问题</p>
+                        <p class="ui-tipbox-explain">填入完成后，务必另存为<b>csv(逗号分隔)</b>后再上传</p>
+                      </div>
+                    </div>
+                    <form name="multi_delivery_form" enctype="multipart/form-data" class="ui-form mt-20" method="POST" accept-charset="utf-8">
+                      <fieldset>
+                        <div class="ui-form-item">
+                          <label class="ui-label ui-label-reset"><span class="ui-form-required">*</span>上传发货单</label>
+                          <input class="ui-input" type="file" name="file" value="" />
+                          <p class="ui-form-explain">请选择要上传的发货文件(.CSV格式)</p>
+                          <p class="ui-form-explain" style="color: red">注:批量发货一次不能超过200条,超过请分批上传</p>
+                        </div>
+                        <div class="ui-form-item">
+                          <label class="ui-label"><span class="ui-form-required">*</span>验证码</label>
+                          <input class="ui-input ui-input-checkcode" type="text" data-explain="请输入右图中字符，不区分大小写。" maxlength="4" autocomplete="off" value="" name="fourcode"> <img class="ui-checkcode-imgcode-img" align="absMiddle" alt="请输入您看到的内容" src="../../verify.php" title="点击刷新图片校验码"> <a href="#" class="ui-checkcode-imgcode-img c-999">看不清，换一张</a>
+                          <div class="ui-form-explain">请输入右图中字符，不区分大小写。</div>
+                        </div>
+                        <div class="ui-form-item">
+                          <input type="submit" class="ui-button ui-button-mred" value="上传"> </div>
+                      </fieldset>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="footer" class="footer-copyright">
+      <div class="footer-content">
+        <div class="wrapper">
+          <p>Copyright © 2015&nbsp;杭州魔筷科技有限公司 &nbsp; 联络电话：0571-88110501</p>
+          <!--<p>-->
+          <!--<a target="_blank" href="http://s1.ve.cn/statics/ve_2_1/css/img/yyzz.jpg?20141117">营业执照</a> |-->
+          <!--<a target="_blank" href="http://s1.ve.cn/statics/ve_2_1/css/img/bbbd.jpg?20141117">中华财险</a> |-->
+          <!--<a target="_blank" href="http://s1.ve.cn/statics/ve_2_1/css/img/spxk.jpg?20141117">食品流通许可证 SP4401061410023262</a></p>-->
+          <!--<div class="footer-links">-->
+          <!--<a href="javascript:;" title="可信网站身份验证" rel="nofollow"><i class="f-logo-1"></i></a>-->
+          <!--<a href="javascript:;" target="_blank" title="经营性网站备案信息" rel="nofollow"><i class="f-logo-2"></i></a>-->
+          <!--<a href="http://www.gzaic.gov.cn/GZCX/WebUI/credit/qiyeInfo.htm" target="_blank" title="" rel="nofollow"><i class="f-logo-3"></i></a>-->
+          <!--<a href="javascript:;" target="_blank" title="" rel="nofollow"><i class="f-logo-4"></i></a>-->
+          <!--<a href="javascript:;" target="_blank" title="" rel="nofollow"><i class="f-logo-5"></i></a>-->
+          <!--<a href="https://www.95516.com/" target="_blank" title="" rel="nofollow"><i class="f-logo-6"></i></a>-->
+          <!--</div>-->
+        </div>
+      </div>
+    </div>
+    <div class="view-Loading modify-item-loading" cb-node="loading" style="display: none;">
+      <p><i class="iconfont">󰃄</i> 正在载入...</p>
+    </div>
+  </body>
+
+</html>

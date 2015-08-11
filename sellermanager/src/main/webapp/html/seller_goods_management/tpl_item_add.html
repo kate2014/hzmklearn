@@ -1,0 +1,220 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>商家中心-魔筷科技</title>
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <meta name="robots" content="noindex">
+    <meta name="renderer" content="webkit" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <!-- inject:css -->
+    <link rel="stylesheet" href="../style/pure.min.css?v=1.0.0">
+    <link rel="stylesheet" href="../style/default.css?v=1.0.0">
+    <link rel="stylesheet" href="../style/seller.css?v=1.0.0">
+    <!-- endinject -->
+    <script>
+      var _Global = {
+        type: 'template'
+      }
+    </script>
+    <!-- inject:js -->
+    <script src="../src/jq.js?v=1.0.0"></script>
+    <script src="../src/t.js?v=1.0.0"></script>
+    <script src="../src/common.js?v=1.0.0"></script>
+    <script src="../src/cobra.js?v=1.0.0"></script>
+    <script src="../src/plugin/im/jquery.inputmask.bundle.min.js?v=1.0.0"></script>
+    <script src="../src/plugin/jquery.calendar/jquery.cxcalendar.js?v=1.0.0"></script>
+    <script src="../src/plugin/uploadify/jquery.uploadify.js?v=1.0.0"></script>
+    <script src="../src/plugin/ueditor/ueditor.config.js?v=1.0.0"></script>
+    <script src="../src/plugin/ueditor/ueditor.all.js?v=1.0.0"></script>
+    <script src="../src/plugin/miniDialog.js?v=1.0.0"></script>
+    <script src="../src/plugin/lazyLoad.js?v=1.0.0"></script>
+    <script src="../src/fn/mod_corner.js?v=1.0.0"></script>
+    <script src="../src/fn/goods.js?v=1.0.0"></script>
+    <!-- endinject -->
+  </head>
+
+  <body>
+    <div id="container">
+      <div id="head">
+        <div class="wrapper">
+          <div class="main-logo ">
+            <div id="st-nav"> <span id="login-status" class="op" data-status="1">
+                        <span class="st-icons account">欢迎使用，洋东西</span> <a class="j-logout" href="javascript:;" rel="nofollow">[退出]</a> </span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="main">
+        <div class="ui-nav seller-nav">
+          <div class="ui-nav-main  seller-nav-bg">
+            <ul class="wrapper seller-nav-main">
+              <li class="ui-nav-item ui-nav-item-current"> <a href="../seller_goods_management/goods_item_list.html">商品管理</a>
+                <ul class="ui-nav-submain" style="display:block;">
+                  <li class="ui-nav-subitem"> <a href="../seller_goods_management/goods_item_list.html">商品库</a> </li>
+                  <li class="ui-nav-subitem"> <a href="../seller_goods_management/goods_item_add.html">添加商品</a> </li>
+                  <li class="ui-nav-subitem"> <a href="../seller_goods_management/brand_list.html">品牌管理</a> </li>
+                  <li class="ui-nav-subitem ui-nav-subitem-current"> <a href="../seller_goods_management/tpl_item_list.html">模板管理</a> </li>
+                  <li class="ui-nav-subitem"> <a href="../corner_mark/list.html">角标管理</a> </li>
+                </ul>
+              </li>
+              <li class="ui-nav-item"> <a href="../promotion_management/feed_back.html">运营管理</a>
+                <ul class="ui-nav-submain">
+                  <li class="ui-nav-subitem"> <a href="../promotion_management/feed_back.html">反馈信息</a> </li>
+                  <li class="ui-nav-subitem"> <a href="../promotion_management/send_msg.html">发送站内信</a> </li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+          <div class="ui-nav-subcontainer"></div>
+        </div>
+        <div id="content" class="wrapper">
+          <div class="pure-g admin-wrapper">
+            <div class="pure-u-1 main">
+              <h1 class="seller-title"> 添加模板 </h1>
+              <div class="sp-body view-CategorySelectView" cb-node="selectionPage" style="display: block;">
+                <h1 class="product-add-title">选择商品类目</h1>
+                <p class="product-add-note">选择一个类目添加商品</p>
+                <div class="pa-category-select view-CategorySelectList" cb-node="categoryListView"></div>
+                <p class="product-add-note">当前选择：<span class="view-CurrentSelection" cb-node="categorySelection"></span> </p>
+                <div class="product-add-footbtn"> <a href="javascript:;" class="ui-button ui-button-lgreen ui-button-ldisable product-add-bigbtn view-NextBtn" cb-node="goNext" cb-event="click~goNext">请选择类目</a> </div>
+              </div>
+              <div class="sp-body view-ProductDetailView" style="display: none;" cb-node="productDetailPage">
+                <h1 class="product-add-title">填写模板详情</h1>
+                <p class="product-add-note">&nbsp; </p>
+                <div class="product-add-block view-BasisInfoDetail">
+                  <h4>商品信息</h4>
+                  <div class="product-add-main">
+                    <form class="ui-form product-add-form" method="post" action="#" cb-node="productionTitleForm">
+                      <fieldset>
+                        <div class="ui-form-item">
+                          <label class="ui-label"><span class="ui-form-required">*</span>模板名称:</label>
+                          <input class="ui-input big require" type="text" name="template_name" cb-model="template_name" cb-node="template_name" /> </div>
+                        <div class="ui-form-item">
+                          <label class="ui-label"><span class="ui-form-required">*</span>商品类目:</label>
+                          <p class="ui-form-text" cb-node="cate_name"></p> <span class="ui-form-other"><a href="javascript:;" class="view-BackBtn" cb-node="reSelectBtn" cb-event="click~backToSelection:">重新选择</a></span> </div>
+                        <div class="ui-form-item">
+                          <label class="ui-label"><span class="ui-form-required">*</span>商品名称:</label>
+                          <input class="ui-input big require" type="text" name="name" cb-model="name" cb-node="name" /> </div>
+                        <div class="ui-form-item">
+                          <label class="ui-label"><span class="ui-form-required">*</span>商品简称:</label>
+                          <input class="ui-input big require" type="text" name="sub_name" cb-node="sub_name" /> <span class="ui-form-other hint">用于发送短信</span> </div>
+                      </fieldset>
+                    </form>
+                    <form class="ui-form product-add-form" method="post" action="#" cb-node="productionKeyForm">
+                      <fieldset class="view-KeyPropDetail" style="width: 100%;">
+                        <div class="ui-form-item">
+                          <label class="ui-label"><span class="ui-form-required">*</span>品牌:</label>
+                          <select name="brand_id" cb-node="brand_id" class="small ui-input ui-input-select require"></select> <a href="../seller_goods_management/brand_add.html" target="_blank" style="cursor: pointer;padding-left: 10px;">添加品牌</a> </div>
+                        <div class="ui-form-item">
+                          <label class="ui-label">商品简述:</label>
+                          <textarea class="ui-input big" name="brief" cb-node="brief" style="width : 400px; height : 80px;"></textarea>
+                        </div>
+                        <div class="ui-form-item">
+                          <label class="ui-label">角标:</label> <span id="corner-box" class="corner-box"> <a href="javascript:;" title="添加角标" class="holder-box j-add-corner"></a> <a href="javascript:;" class="thumb-box" style="display: none"><img src="http://g.taojae.com/img/x.png"/> <i class="del-icon j-del-corner" title="删除"></i> </a> </span>
+                          <input class="ui-input big" type="hidden" name="corner_icon" value="" cb-node="corner_icon" /> </div>
+                        <!--<div class="ui-form-item">-->
+                        <!--<label class="ui-label"><span class="ui-form-required">*</span>商品开始售卖时间:</label>-->
+                        <!--<input class="ui-input require" readonly="readonly" type="text" name="time_begin" value=""-->
+                        <!--cb-node="time_begin"/>-->
+                        <!--</div>-->
+                        <!--<div class="ui-form-item">-->
+                        <!--<label class="ui-label"><span class="ui-form-required">*</span>商品结束售卖时间:</label>-->
+                        <!--<input class="ui-input require" readonly="readonly" type="text" name="time_end" value=""-->
+                        <!--cb-node="time_end"/>-->
+                        <!--</div>-->
+                        <div class="ui-form-item">
+                          <label class="ui-label"><span class="ui-form-required">*</span>每单最少购买量:</label>
+                          <input class="ui-input require" type="text" name="user_min_bought" value="0" cb-node="user_min_bought" /> <span class="ui-form-other hint">0为不限定</span> </div>
+                        <div class="ui-form-item">
+                          <label class="ui-label"><span class="ui-form-required">*</span>每单最多购买量:</label>
+                          <input class="ui-input require" type="text" name="user_max_bought" value="0" cb-node="user_max_bought" /> <span class="ui-form-other hint">0为不限定</span> </div>
+                        <!--<div class="ui-form-item">-->
+                        <!--<label class="ui-label"><span class="ui-form-required">*</span>原价:</label>-->
+                        <!--<input data-inputmask="'alias': 'numeric', 'groupSeparator': ',', 'autoGroup': true, 'digits': 2, 'digitsOptional': false, 'prefix': '￥', 'placeholder': '0', 'rightAlign' : false, 'autoUnmask' : true"-->
+                        <!--class="ui-input require" type="text" name="origin_price" cb-node="origin_price"/>-->
+                        <!--</div>-->
+                        <!--<div class="ui-form-item">-->
+                        <!--<label class="ui-label"><span class="ui-form-required">*</span>现价:</label>-->
+                        <!--<input data-inputmask="'alias': 'numeric', 'groupSeparator': ',', 'autoGroup': true, 'digits': 2, 'digitsOptional': false, 'prefix': '￥ ', 'placeholder': '0', 'rightAlign' : false, 'autoUnmask' : true"-->
+                        <!--class="ui-input require" type="text" name="current_price" cb-node="current_price"/>-->
+                        <!--</div>-->
+                        <!--<div class="ui-form-item"> <label class="ui-label"><span class="ui-form-required">*</span>是否进口:</label> <select name="is_import require" cb-node="is_import"> <option value="-1">-请选择-</option> <option value="0">否</option> <option value="1">是</option> </select> </div>-->
+                      </fieldset>
+                    </form>
+                    <form class="ui-form product-add-form" method="post" action="#" cb-node="productionAddtionalForm">
+                      <fieldset class="view-OtherPropDetail" cb-node="addtionalInfo" style="width: 100%;"></fieldset>
+                    </form>
+                  </div>
+                </div>
+                <div class="product-add-block view-ProductDetail">
+                  <h4><span class="ui-form-required">*</span>商品详情 <p></p> </h4>
+                  <div class="product-add-editor">
+                    <p class="product-add-editor-note">童装童鞋等须有尺码表；进制出现淘宝等其他平台的网址、水印等信息；禁止在该商品详情中展示其他商品图片；<a href="javascript:;" cb-event="click~showProductionExample:" class="view-ShowItemDetailExampleBoxBtn" style="font-size:12px">查看模板</a>
+                      <br/>图片请不要出现文字信息和品牌LOGO ；请上传jpg格式不超过800宽、不超过150KB的图片。 </p>
+                    <div id="platform">
+                      <ul>
+                        <li class="on" cb-node="platform_pc" cb-event="click~changePlatform:description"> 电脑端 </li>
+                        <li class="" cb-node="platform_mob" cb-event="click~changePlatform:m_description"> 移动端 </li>
+                      </ul>
+                    </div>
+                    <script type="text/plain" id="editor" style="width:708px;height:500px;"></script>
+                    <div cb-node="editor" style="width:708px;height:500px;overflow:auto;display: none;border: 1px solid #d4d4d4;border-radius:4px;"></div>
+                  </div>
+                </div>
+                <div class="product-add-footbtn"> <a href="../seller_goods_management/tpl_item_list.html" class="ui-button ui-button-lwhite product-add-bigbtn product-add-shortbtn view-BackBtn" style="display:none;" cb-node="backTo">返回</a> <a href="javascript:;" class="ui-button ui-button-lgreen product-add-bigbtn view-CreateBtn"
+                  cb-event="click~saveTemplate:">发布模板</a> </div>
+              </div>
+              <div class="isTemplate" style="display:none">
+                <!-- 商品详情示例 -->
+                <div template="itemDetailExampleBox" template-display="block" style="display:none;" cb-node="itemDetailExampleBox">
+                  <div style="padding:30px;">
+                    <p>1、商品信息（除基本信息之外需包含如下，不同类目可依据实际内容填写）</p>
+                    <p>材质：</p>
+                    <p>洗涤说明：</p>
+                    <p>产地：</p>
+                    <p>版型指数：修身 正常 宽松</p>
+                    <p>弹力指数：无弹 微弹 弹力 超弹</p>
+                    <p>柔软指数：软 偏软 适中 偏硬 硬</p>
+                    <p>……</p>
+                    <p>2、尺码对照表 <span style="color:red;">(童装、童鞋等具规格产品必须具备)</span> </p>
+                    <p>3、图片（不加水印）</p>
+                    <p>大图（上身图）、建议搭配、细节图、水洗唛图、质检报告证明图</p>
+                  </div>
+                </div>
+                <div cb-node="skuLockHelper">
+                  <div class="lock-info view-LockInfo"><i class="iconfont">󰃉</i> 为避免误操作，销售属性默认已锁定，修改请先 <a href="javascript:;" class="view-BtnShowUnlockDialog">点此解除锁定</a> </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="footer" class="footer-copyright">
+      <div class="footer-content">
+        <div class="wrapper">
+          <p>Copyright © 2015&nbsp;杭州魔筷科技有限公司 &nbsp; 联络电话：0571-88110501</p>
+          <!--<p>-->
+          <!--<a target="_blank" href="http://s1.ve.cn/statics/ve_2_1/css/img/yyzz.jpg?20141117">营业执照</a> |-->
+          <!--<a target="_blank" href="http://s1.ve.cn/statics/ve_2_1/css/img/bbbd.jpg?20141117">中华财险</a> |-->
+          <!--<a target="_blank" href="http://s1.ve.cn/statics/ve_2_1/css/img/spxk.jpg?20141117">食品流通许可证 SP4401061410023262</a></p>-->
+          <!--<div class="footer-links">-->
+          <!--<a href="javascript:;" title="可信网站身份验证" rel="nofollow"><i class="f-logo-1"></i></a>-->
+          <!--<a href="javascript:;" target="_blank" title="经营性网站备案信息" rel="nofollow"><i class="f-logo-2"></i></a>-->
+          <!--<a href="http://www.gzaic.gov.cn/GZCX/WebUI/credit/qiyeInfo.htm" target="_blank" title="" rel="nofollow"><i class="f-logo-3"></i></a>-->
+          <!--<a href="javascript:;" target="_blank" title="" rel="nofollow"><i class="f-logo-4"></i></a>-->
+          <!--<a href="javascript:;" target="_blank" title="" rel="nofollow"><i class="f-logo-5"></i></a>-->
+          <!--<a href="https://www.95516.com/" target="_blank" title="" rel="nofollow"><i class="f-logo-6"></i></a>-->
+          <!--</div>-->
+        </div>
+      </div>
+    </div>
+    <div class="view-Loading modify-item-loading" cb-node="loading" style="display: none;">
+      <p><i class="iconfont">󰃄</i> 正在载入...</p>
+    </div>
+  </body>
+
+</html>

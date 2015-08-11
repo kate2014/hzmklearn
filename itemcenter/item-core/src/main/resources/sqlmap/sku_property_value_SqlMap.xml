@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="sku_property_value">
+  <resultMap class="com.mockuai.tradecenter.core.domain.SkuPropertyValueDO" id="BaseResultMap">
+    <result column="id" jdbcType="BIGINT" property="id" />
+    <result column="key" jdbcType="VARCHAR" property="key" />
+    <result column="val" jdbcType="VARCHAR" property="val" />
+    <result column="sku_property_tmpl_id" jdbcType="BIGINT" property="skuPropertyTmplId" />
+    <result column="biz_code" jdbcType="VARCHAR" property="bizCode" />
+    <result column="delete_mark" jdbcType="TINYINT" property="deleteMark" />
+    <result column="gmt_created" jdbcType="DATETIME" property="gmtCreated" />
+    <result column="gmt_modified" jdbcType="DATETIME" property="gmtModified" />
+  </resultMap>
+  
+  <sql id="Base_Column_List">
+    id, key, val, sku_property_tmpl_id, delete_mark, gmt_created, gmt_modified
+  </sql>
+  
+  <select id="selectPropertyValueById" parameterClass="com.mockuai.tradecenter.core.domain.SkuPropertyValueDO" resultMap="BaseResultMap">
+    select 
+    <include refid="sku_property_value.Base_Column_List" />
+    from sku_property_value
+    where id = #id:BIGINT#
+  </select>
+
+<!-- 用于做关联查询 表 sku_property_tmpl表的主键 id -->  
+ <select id="getSkuPropertyValue" parameterClass="java.lang.Long" resultMap="BaseResultMap">
+ 	select	 
+    <include refid="sku_property_value.Base_Column_List" />
+    from sku_property_value
+    	where sku_property_tmpl_id = #value# and delete_mark = 0
+ </select>
+
+
+</sqlMap>

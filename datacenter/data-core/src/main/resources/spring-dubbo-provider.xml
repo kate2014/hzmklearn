@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<beans xmlns="http://www.springframework.org/schema/beans"  
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"  
+  xsi:schemaLocation="http://www.springframework.org/schema/beans  
+    http://www.springframework.org/schema/beans/spring-beans.xsd  
+    http://code.alibabatech.com/schema/dubbo  
+    http://code.alibabatech.com/schema/dubbo/dubbo.xsd ">   
+
+    <!-- 具体的实现bean -->
+
+    <bean id="dataClient" class="com.mockuai.datacenter.core.api.impl.DataServiceImpl" />
+
+	<dubbo:registry address="zookeeper://${datacenter.dubbo.registry.address}" />
+	
+    <!-- 用dubbo协议在20880端口暴露服务 -->
+    <dubbo:protocol name="dubbo" port="${datacenter.dubbo.provider.port}" />
+  
+    <!-- 声明需要暴露的服务接口 -->
+   <dubbo:service interface="com.mockuai.datacenter.common.api.DataService" ref="dataService" protocol="dubbo"/>
+
+</beans>
